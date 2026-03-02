@@ -40,3 +40,319 @@ a {
     color-scheme: dark;
   }
 }
+
+/* ===== BANNER BASE ===== */
+
+.banner {
+  position: relative;
+  width: 100%;
+  min-height: clamp(500px, 45vw, 800px);
+  overflow: visible;
+  background: linear-gradient(
+      to top,
+      rgba(10, 10, 10, 0.6),
+      rgba(147, 181, 145, 0.6)
+    ),
+    rgb(147, 181, 145);
+}
+
+.banner-main-elements {
+  position: absolute;
+  left: 50%;
+  bottom: 38%; /* anchor to barrel center */
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3.5vh; /* proportional vertical spacing */
+  width: 100%;
+  z-index: 3;
+}
+
+.hero-text {
+  font-family: "RivannaNF", serif;
+  font-size: clamp(2rem, 2.6vw, 2.9em);
+  letter-spacing: 0.25em;
+  text-align: center;
+  color: #f2c489;
+  text-shadow: #000 2px 2px 2px;
+  line-height: 1.2;
+}
+
+.logo {
+  width: clamp(230px, 42vw, 750px);
+  height: auto;
+}
+
+/* ===== DECOR TOP CORNERS ===== */
+.decor {
+  position: absolute;
+  width: 36%;
+  top: 0.5%;
+  z-index: 1;
+}
+
+.decor-left {
+  left: 0.5%;
+}
+
+.decor-right {
+  right: 0.5%;
+}
+
+/* ===== HOPS (near decorations) ===== */
+.hops {
+  position: absolute;
+  width: 16%;
+  top: 17%;
+  z-index: 1;
+}
+
+.hops-left {
+  left: 5.8%;
+}
+
+.hops-right {
+  right: 5.8%;
+}
+
+@font-face {
+  font-family: "RivannaNF";
+  src: url("/fonts/RivannaNF.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ===== WHAT IS LAMBIC SECTION ===== */
+.what-is-lambic-section {
+  position: relative;
+  padding: 4rem 2rem;
+  height: 60vh;
+  background-image: url("/images/what-is-lambic/barrel-room.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* PARALLAX */
+  margin: 0 auto;
+  justify-items: center;
+}
+
+.what-is-lambic-section .content {
+  position: relative;
+  z-index: 2; /* keeps content above overlay */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+/* ===== SECTIONS WRAPPER FOR BUTTON ===== */
+.sections-wrapper {
+  position: relative; /* relative for button positioning */
+  width: 100%;
+}
+
+.sections-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* ===== BUTTON PINNED ABOVE CATEGORIES ===== */
+.categories-wrapper {
+  position: relative;
+}
+
+.what-is-lambic-button-wrapper {
+  position: absolute;
+  top: 0; /* pinned to top of categories-wrapper */
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.what-is-lambic-button-wrapper button {
+  font-family: "RivannaNF", serif;
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  letter-spacing: 0.25em;
+  line-height: 1.2;
+  text-shadow: #000 2px 2px 2px;
+  color: #93b591;
+  background-color: #f2c489;
+  border: 2px solid #93b591;
+  box-shadow: rgba(0, 0, 0, 0.8) 3px 3px 5px;
+  border-radius: 60px;
+  padding: 15px 35px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.what-is-lambic-button-wrapper button:hover {
+  background-color: #93b591;
+  color: #f2c489;
+  border-color: #f2c489;
+}
+
+/* ===== BARREL WRAPPER ===== */
+.banner-container {
+  position: relative;
+}
+
+.barrel-wrapper {
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  transform: translate(-50%, -50%);
+  width: 45%;
+  max-width: 770px;
+  z-index: 4;
+  display: flex;
+  justify-content: center;
+}
+
+.barrel-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 50%;
+}
+
+.barrel-overlay {
+  position: absolute;
+  width: 88%;
+  height: 86%;
+  top: 50.5%;
+  left: 50.5%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 1rem;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 10%, rgba(255, 255, 255, 0) 80%);
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.barrel-text {
+  opacity: 0;
+  max-width: 75%;
+  font-weight: bold;
+  color: #171717;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.barrel-text h2 {
+  font-family: "RivannaNF", serif;
+  margin-bottom: 3rem;
+  font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+}
+
+.barrel-text p {
+  line-height: 1.4;
+  font-size: clamp(0.9rem, 2.5vw, 1rem);
+}
+
+/* Desktop hover only */
+@media (hover: hover) and (pointer: fine) {
+  .barrel-wrapper:hover .barrel-overlay {
+    opacity: 1;
+  }
+  .barrel-wrapper:hover .barrel-text {
+    opacity: 1;
+  }
+}
+
+/* Mobile scroll only */
+@media (hover: none) and (pointer: coarse) {
+  .barrel-wrapper {
+    width: 65%;
+  }
+  .barrel-wrapper.visible .barrel-overlay,
+  .barrel-wrapper.visible .barrel-text {
+    opacity: 1;
+  }
+  .barrel-text p {
+    font-size: clamp(0.9rem, 3vw, 1.1rem);
+  }
+
+  .hero-text {
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+  }
+
+  .logo {
+    width: 50%;
+  }
+}
+
+/* ===== CATEGORIES GRID ===== */
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  padding: 8rem 8rem;
+  max-width: 100%;
+  background-color: #f2c489;
+}
+
+.category-card {
+  position: relative;
+  display: block;
+  margin: 2rem;
+  overflow: hidden;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.category-card:hover {
+  transform: scale(1.05);
+}
+
+.category-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  transition: filter 0.3s ease;
+}
+
+.category-card:hover .category-image {
+  filter: brightness(70%);
+}
+
+.category-overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 1rem;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  font-family: "RivannaNF", serif;
+  font-size: 1.2rem;
+}
+
+/* Mobile categories grid */
+@media (max-width: 768px) {
+  .categories-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 4rem 2rem;
+  }
+  .category-overlay {
+    font-size: 1rem;
+  }
+  .what-is-lambic-section {
+    height: auto; /* allow height to grow naturally */
+    padding: 2rem 1rem;
+  }
+  .what-is-lambic-button-wrapper button {
+    font-size: clamp(1.2rem, 4vw, 2rem);
+  }
+}
