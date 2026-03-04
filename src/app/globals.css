@@ -10,8 +10,7 @@
   }
 }
 
-html,
-body {
+html, body {
   max-width: 100vw;
   overflow-x: hidden;
 }
@@ -26,95 +25,11 @@ body {
 
 * {
   box-sizing: border-box;
-  padding: 0;
   margin: 0;
+  padding: 0;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-}
-
-/* ===== BANNER BASE ===== */
-
-.banner {
-  position: relative;
-  width: 100%;
-  min-height: clamp(500px, 45vw, 800px);
-  overflow: visible;
-  background: linear-gradient(
-      to top,
-      rgba(10, 10, 10, 0.6),
-      rgba(147, 181, 145, 0.6)
-    ),
-    rgb(147, 181, 145);
-}
-
-.banner-main-elements {
-  position: absolute;
-  left: 50%;
-  bottom: 38%; /* anchor to barrel center */
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 3.5vh; /* proportional vertical spacing */
-  width: 100%;
-  z-index: 3;
-}
-
-.hero-text {
-  font-family: "RivannaNF", serif;
-  font-size: clamp(2rem, 2.6vw, 2.9em);
-  letter-spacing: 0.25em;
-  text-align: center;
-  color: #f2c489;
-  text-shadow: #000 2px 2px 2px;
-  line-height: 1.2;
-}
-
-.logo {
-  width: clamp(230px, 42vw, 750px);
-  height: auto;
-}
-
-/* ===== DECOR TOP CORNERS ===== */
-.decor {
-  position: absolute;
-  width: 36%;
-  top: 0.5%;
-  z-index: 1;
-}
-
-.decor-left {
-  left: 0.5%;
-}
-
-.decor-right {
-  right: 0.5%;
-}
-
-/* ===== HOPS (near decorations) ===== */
-.hops {
-  position: absolute;
-  width: 16%;
-  top: 17%;
-  z-index: 1;
-}
-
-.hops-left {
-  left: 5.8%;
-}
-
-.hops-right {
-  right: 5.8%;
-}
+a { color: inherit; text-decoration: none; }
 
 @font-face {
   font-family: "RivannaNF";
@@ -124,71 +39,197 @@ a {
   font-display: swap;
 }
 
-/* ===== WHAT IS LAMBIC SECTION ===== */
+/* ===================== BANNER ======================== */
+.banner {
+  position: relative;
+  width: 100%;
+  min-height: clamp(430px, 105vmin, 820px);
+  background: linear-gradient(to top, rgba(10,10,10,0.6), rgba(147,181,145,0.6)), rgb(147,181,145);
+  overflow: visible;
+}
+
+@media (min-width: 450px) and (max-width: 1000px) {
+  .banner { 
+    min-height: 610px; 
+}
+}
+
+
+.hero-text {
+  position: absolute;
+  top: clamp(3rem, 5vw, 4rem); /* always some top margin */
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: "RivannaNF", serif;
+  font-size: clamp(1.6rem, 2.5vw, 2.8rem);
+  letter-spacing: 0.25em;
+  color: #f2c489;
+  text-shadow: #000 2px 2px 2px;
+  text-align: center;
+  line-height: 1.2;
+  z-index: 2;
+}
+
+/* Decorations */
+.decor {
+  position: absolute;
+  width: 36%;
+  top: 0.5%;
+  z-index: 1;
+}
+
+.decor-left { left: 0.5%; }
+.decor-right { right: 0.5%; }
+
+/* ===================== BARREL + LOGO + OVERLAY ======================== */
+.banner-container { 
+    position: relative; 
+}
+
+.barrel-wrapper {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(40px, 8%, 80px);
+  transform: translateX(-50%) translateY(50%); /* 50% of barrel overlaps next section */
+  width: clamp(240px, 70%, 780px);
+  display: flex;
+  justify-content: center;
+  z-index: 3;
+  aspect-ratio: 820 / 1026;
+}
+
+.barrel-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 0;
+  object-fit: contain;
+}
+
+.barrel-overlay {
+  position: absolute;
+  top: 61%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 89%;
+  aspect-ratio: 1 / 1; /* maintain circular shape */
+  border-radius: 50%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  padding: 5.5cqw;
+
+  background: radial-gradient(
+    circle,
+    rgba(255,255,255,0.8) 10%,
+    rgba(255,255,255,0) 80%
+  );
+
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+
+  container-type: inline-size; /* enable container queries for text scaling */
+}
+
+.barrel-text {
+  opacity: 0;
+  max-width: 90%;
+  font-weight: bold;
+  color: #171717;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.barrel-text h2 {
+  font-family: "RivannaNF", serif;
+  font-size: 12cqw;
+  margin-bottom: 5cqw;
+  font-weight: 500;
+}
+
+.barrel-text p {
+  font-size: 4cqw;
+  line-height: 1.3;
+}
+
+@media (max-width: 650px) {
+  .desktop-only-text {
+  display: none; /* hide description on small screens to save space */
+  }
+  .barrel-text h2 {
+    font-size: clamp(1rem, 16cqw, 4rem); /* increase title size on small screens for better readability */
+  }
+  .barrel-text p {
+    font-size: clamp(0.85rem, 4cqw, 1.4rem);
+  }
+}
+
+
+/* Default hidden for all devices */
+.barrel-wrapper .barrel-overlay,
+.barrel-wrapper .barrel-text {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+/* Desktop hover */
+@media (hover: hover) and (pointer: fine) {
+  .barrel-wrapper.client:hover .barrel-overlay,
+  .barrel-wrapper.client:hover .barrel-text {
+    opacity: 1;
+  }
+}
+
+/* Mobile scroll */
+@media (hover: none) and (pointer: coarse) {
+  .barrel-wrapper.client.visible .barrel-overlay,
+  .barrel-wrapper.client.visible .barrel-text {
+    opacity: 1;
+  }
+}
+
+/* ===================== WHAT IS LAMBIC ==================== */
 .what-is-lambic-section {
   position: relative;
   padding: 4rem 2rem;
-  height: 60vh;
+  min-height: clamp(50vh, 60vw, 85vh);
   background-image: url("/images/what-is-lambic/barrel-room.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-attachment: fixed; /* PARALLAX */
-  margin: 0 auto;
-  justify-items: center;
+  background-attachment: fixed;
+  margin-top: 0;
 }
 
-.what-is-lambic-section .content {
-  position: relative;
-  z-index: 2; /* keeps content above overlay */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-}
-
-/* ===== SECTIONS WRAPPER FOR BUTTON ===== */
-.sections-wrapper {
-  position: relative; /* relative for button positioning */
-  width: 100%;
-}
-
-.sections-inner {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-}
-
-/* ===== BUTTON PINNED ABOVE CATEGORIES ===== */
-.categories-wrapper {
-  position: relative;
-}
+/* ===================== WHAT IS LAMBIC BUTTON ======================== */
+.categories-wrapper { position: relative; }
 
 .what-is-lambic-button-wrapper {
-  position: absolute;
-  top: 0; /* pinned to top of categories-wrapper */
+  position: relative;
   left: 50%;
-  transform: translateX(-50%) translateY(-50%);
-  z-index: 5;
+  transform: translateX(-50%) translateY(50%); /* 50% of button overlaps previous section */
+  margin-top: -20vh; /* negative margin pulls button over the previous section */
   display: flex;
   justify-content: center;
-  width: 100%;
 }
 
 .what-is-lambic-button-wrapper button {
   font-family: "RivannaNF", serif;
-  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-size: clamp(1.6rem, 2.5vw, 2.6rem);
   letter-spacing: 0.25em;
-  line-height: 1.2;
   text-shadow: #000 2px 2px 2px;
   color: #93b591;
   background-color: #f2c489;
   border: 2px solid #93b591;
-  box-shadow: rgba(0, 0, 0, 0.8) 3px 3px 5px;
+  box-shadow: rgba(0,0,0,0.8) 3px 3px 5px;
   border-radius: 60px;
   padding: 15px 35px;
   cursor: pointer;
-  text-align: center;
+  width: auto;
+  max-width: 500px;
 }
 
 .what-is-lambic-button-wrapper button:hover {
@@ -197,112 +238,25 @@ a {
   border-color: #f2c489;
 }
 
-/* ===== BARREL WRAPPER ===== */
-.banner-container {
-  position: relative;
-}
-
-.barrel-wrapper {
-  position: absolute;
-  left: 50%;
-  top: 100%;
-  transform: translate(-50%, -50%);
-  width: 45%;
-  max-width: 770px;
-  z-index: 4;
-  display: flex;
-  justify-content: center;
-}
-
-.barrel-image {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 50%;
-}
-
-.barrel-overlay {
-  position: absolute;
-  width: 88%;
-  height: 86%;
-  top: 50.5%;
-  left: 50.5%;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 1rem;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 10%, rgba(255, 255, 255, 0) 80%);
-  opacity: 0;
-  transition: opacity 0.5s ease-in-out;
-}
-
-.barrel-text {
-  opacity: 0;
-  max-width: 75%;
-  font-weight: bold;
-  color: #171717;
-  transition: opacity 0.5s ease-in-out;
-}
-
-.barrel-text h2 {
-  font-family: "RivannaNF", serif;
-  margin-bottom: 3rem;
-  font-size: clamp(2.5rem, 5.5vw, 4.5rem);
-}
-
-.barrel-text p {
-  line-height: 1.4;
-  font-size: clamp(0.9rem, 2.5vw, 1rem);
-}
-
-/* Desktop hover only */
-@media (hover: hover) and (pointer: fine) {
-  .barrel-wrapper:hover .barrel-overlay {
-    opacity: 1;
-  }
-  .barrel-wrapper:hover .barrel-text {
-    opacity: 1;
-  }
-}
-
-/* Mobile scroll only */
-@media (hover: none) and (pointer: coarse) {
-  .barrel-wrapper {
-    width: 65%;
-  }
-  .barrel-wrapper.visible .barrel-overlay,
-  .barrel-wrapper.visible .barrel-text {
-    opacity: 1;
-  }
-  .barrel-text p {
-    font-size: clamp(0.9rem, 3vw, 1.1rem);
-  }
-
-  .hero-text {
-    font-size: clamp(1.5rem, 4vw, 2.5rem);
-  }
-
-  .logo {
-    width: 50%;
-  }
-}
-
-/* ===== CATEGORIES GRID ===== */
+/* ===================== CATEGORIES GRID =================== */
 .categories-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
-  padding: 8rem 8rem;
-  max-width: 100%;
+  padding: 8rem;
   background-color: #f2c489;
+}
+
+@media (max-width: 1100px) {
+  .categories-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .categories-grid { grid-template-columns: 1fr; padding: 6rem 2rem; }
 }
 
 .category-card {
   position: relative;
-  display: block;
   margin: 2rem;
   overflow: hidden;
   border-radius: 12px;
@@ -310,20 +264,13 @@ a {
   transition: transform 0.3s ease;
 }
 
-.category-card:hover {
-  transform: scale(1.05);
-}
+.category-card:hover { transform: scale(1.05); }
 
 .category-image {
   width: 100%;
   height: auto;
   display: block;
   object-fit: cover;
-  transition: filter 0.3s ease;
-}
-
-.category-card:hover .category-image {
-  filter: brightness(70%);
 }
 
 .category-overlay {
@@ -332,27 +279,8 @@ a {
   width: 100%;
   padding: 1rem;
   text-align: center;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0,0,0,0.4);
   color: #fff;
   font-family: "RivannaNF", serif;
   font-size: 1.2rem;
-}
-
-/* Mobile categories grid */
-@media (max-width: 768px) {
-  .categories-grid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-    padding: 4rem 2rem;
-  }
-  .category-overlay {
-    font-size: 1rem;
-  }
-  .what-is-lambic-section {
-    height: auto; /* allow height to grow naturally */
-    padding: 2rem 1rem;
-  }
-  .what-is-lambic-button-wrapper button {
-    font-size: clamp(1.2rem, 4vw, 2rem);
-  }
 }
