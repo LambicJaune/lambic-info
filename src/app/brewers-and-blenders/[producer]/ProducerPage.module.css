@@ -1,0 +1,302 @@
+/* ================= PAGE ================= */
+.pageContainer {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  background-image: url("/images/brewers-and-blenders/overview_bg.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+/* ================= TITLE BANNER ================= */
+.pageTitleBanner {
+  width: 100%;
+  text-align: center;
+  border-bottom: 2px solid rgba(255,255,255,0.2);
+}
+
+.pageTitleBanner h1 {
+  display: inline-block; 
+  margin: 0;
+  padding: 3.5rem 6rem; 
+  font-size: 3rem;
+  font-weight: 500;
+  color: #f1ca54;
+  font-family: "RivannaNF", serif;
+  text-shadow: 2px 2px 0 rgba(0,0,0,0.8), 4px 4px 12px rgba(0,0,0,0.8);
+  background-image: url("/images/shared/black_paint_stroke.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 100% 120%;
+}
+
+/* ================= PAGE CONTENT ================= */
+.pageContent {
+  width: 100%;
+  padding: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contentWrapper {
+  width: 90%;
+  max-width: 1900px;
+}
+
+/* ================= SIDEBAR ================= */
+.sidebar {
+  float: left;
+  width: 300px;
+  padding: 2rem;
+  background: rgba(0,0,0,0.15);
+  border-radius: 10px;
+  border: 3px solid black;
+  margin-right: 2rem;
+  text-align: center;
+}
+
+/* ================= TOP CONTENT ================= */
+.mainTop {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.overview {
+  flex: 1 1 0;
+  min-width: 250px;
+}
+
+/* ================= LOGO ================= */
+.logoContainer {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  max-width: 350px;
+  margin-bottom: 2rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ================= BREWERY INFO ================= */
+.breweryInfo {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem 0;
+}
+
+.breweryInfo li {
+  margin-bottom: 0.4rem;
+  text-align: center;
+  font-size: 1.3rem;
+}
+
+/* ================= SOCIAL ================= */
+.socialLinks {
+  display: flex;
+  flex-direction: row;
+  font-size: 2rem;
+  justify-content: center;
+  gap: 1.8rem;
+}
+
+.socialLinks a {
+  color: #f1ca54;
+  filter: drop-shadow(2px 2px 1px rgba(0,0,0,0.9));
+  transition: color 0.3s ease;
+}
+
+/* ================= BANNER IMAGE ================= */
+.breweryBanner {
+  position: relative;
+  width: 100%;
+  height: 320px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 4px 4px 10px rgba(0,0,0,0.9);
+  margin-bottom: 2rem;
+}
+
+/* ================= SECTIONS ================= */
+.section {
+  margin-bottom: 1rem;
+  clear: both;
+}
+
+.section h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.section p, .sectionFull p {
+  line-height: 1.6;
+  text-align: justify;
+  font-size: 1.5rem;
+  white-space: pre-line;
+  margin-top: -1rem;
+}
+
+/* ACCORDION */
+.section summary {
+  list-style: none;
+  cursor: pointer;
+}
+
+.section summary::-webkit-details-marker { display: none; }
+
+.section summary h2 {
+  margin: 1rem 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.section summary h2::after {
+  content: "+";
+  font-size: 1.6rem;
+  margin-left: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  border: 2px solid #000;
+  background: rgba(0,0,0,0.15);
+}
+
+.centeredTitle {
+  text-align: center;
+  font-size: 2.2rem;
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+
+.section details[open] summary h2::after { content: "−"; }
+
+/* ================= CATEGORY GRID ================= */
+.categoriesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5.5rem;
+  padding:3rem;
+  justify-items: center;
+}
+
+.categoryCard {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  cursor: pointer;
+  aspect-ratio: 4/3;
+  transition: transform 0.3s ease;
+  box-shadow: 4px 4px 10px rgba(0,0,0,0.9);
+  width: 100%;
+}
+
+.categoryCard:hover { transform: scale(1.05); }
+
+.categoryOverlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.categoryOverlay h3 {
+  color: #f1ca54;
+  font-family: "RivannaNF", serif;
+  font-size: 2.2rem;
+  font-weight: 500;
+  text-shadow: 2px 2px 0 rgba(0,0,0,0.8), 4px 4px 12px rgba(0,0,0,0.8);
+}
+
+/* ================= ZWANZE GRID ================= */
+
+.sectionDescription {
+  max-width: 1200px; 
+  margin: 0 auto 2rem auto; /* Centers the block and adds space before the grid */
+  padding: 2rem 0;
+}
+
+.sectionDescription p {
+  line-height: 1.6;
+  text-align: center;
+  white-space: pre-line; 
+}
+
+.zwanzeGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  justify-items: center;
+  margin: 4rem 0;
+  width: 100%;
+}
+
+.zwanzeButton {
+  position: relative;
+  width: 100%;
+  max-width: 20rem;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 4px 4px 10px rgba(0,0,0,0.9);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  background: #00000018; 
+  margin-bottom: 3rem;
+}
+
+.zwanzeButton:hover { transform: scale(1.07); }
+
+.zwanzeImageWrapper {
+  position: absolute;
+  inset: 0;
+  z-index: 1; /* Dessous */
+}
+
+.zwanzeOverlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 10; /* Force le texte au premier plan */
+  pointer-events: none;
+}
+
+.zwanzeOverlay h3 {
+  font-size: 1.8rem;
+  color: #f1ca54; 
+  text-align: center;
+  line-height: 1.2;
+  margin: 0;
+  padding: 0 1rem;
+  word-break: break-word;
+  text-shadow: 2px 2px 6px rgba(0,0,0,1);
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width:1100px) {
+  .categoriesGrid { grid-template-columns: repeat(2, 1fr); }
+  .zwanzeGrid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width:768px) {
+  .pageContent { padding: 1.5rem 0; }
+  .mainTop { flex-direction: column; }
+  .sidebar { width: 100%; float: none; margin-right: 0; margin-bottom: 2rem; }
+  .overview { width: 100%; }
+  .categoriesGrid { grid-template-columns: 1fr; padding: 2rem 1rem; }
+  .zwanzeGrid { grid-template-columns: 1fr; }
+}

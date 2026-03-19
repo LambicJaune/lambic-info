@@ -1,9 +1,9 @@
 "use client";
 import { useEffect, useState } from "react";
-import Banner from "./components/Banner";
-import WhatIsLambic from "./components/What_is_lambic";
-import Categories from "./components/Categories";
-import Footer from "./components/Footer";
+import Banner from "./landing/Banner";
+import WhatIsLambic from "./landing/WhatIsLambic";
+import Categories from "./landing/Categories";
+import Footer from "./components/GenericFooter";
 import Image from "next/image";
 
 export default function Home() {
@@ -44,7 +44,7 @@ export default function Home() {
 
                 <div id="barrel-wrapper" className={barrelClasses.join(" ")}>
                     <Image
-                        src="/images/welcome/barrel.png"
+                        src="/images/landing/welcome/barrel.png"
                         alt="Barrel with logo"
                         width={820}
                         height={1026}

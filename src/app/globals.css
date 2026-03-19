@@ -42,7 +42,101 @@ a { color: inherit; text-decoration: none; }
   font-display: swap;
 }
 
-/* ===================== BANNER ======================== */
+/* ===================== REUSABLE ELEMENTS ======================== */
+
+
+/* ===================== FOOTER =================== */
+
+.footer {
+  background-color: #000;
+  color: #fff;
+  font-family: "josefin Sans", serif;
+  padding: 3rem 2rem;
+  position: relative;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+
+.footer-links {
+  text-align: center;
+  flex: 1 1 100%;
+  margin-bottom: 2rem;
+}
+
+.footer-title {
+  font-weight: bold;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+.footer-links li {
+  margin: 0.3rem 0;
+}
+
+.footer-links a {
+  color: #f2c489;
+  text-decoration: none;
+  transition: color 0.2s;
+
+}
+
+.footer-links a:hover {
+  color: #93b591;
+  text-shadow: rgba(255, 255, 255, 0.3) 2px 1px 3px;
+}
+
+.footer-social {
+  position: absolute;
+  bottom: 1.5rem;
+  right: 4rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.footer-social a {
+  color: #f2c489;
+  font-size: 3.5rem;
+  transition: color 0.2s;
+}
+
+.footer-social a:hover {
+  color: #ffff;
+}
+
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;       /* stack links + social vertically */
+    align-items: center;          /* center everything horizontally */
+  }
+
+  .footer-links {
+    text-align: center;           /* already centered */
+    margin: 2rem;
+  }
+
+  .footer-social {
+    position: static;             /* remove absolute */
+    display: flex;
+    justify-content: center;      /* center icons horizontally */
+    gap: 1rem;
+  }
+}
+
+/* ===================== LANDING PAGE BANNER ======================== */
 .banner {
   position: relative;
   width: 100%;
@@ -221,7 +315,7 @@ a { color: inherit; text-decoration: none; }
   position: relative;
   padding: 4rem 2rem;
   min-height: clamp(50vh, 60vw, 85vh);
-  background-image: url("/images/what-is-lambic/barrel-room.jpg");
+  background-image: url("/images/landing/what-is-lambic/barrel-room.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -263,9 +357,9 @@ a { color: inherit; text-decoration: none; }
 }
 
 .what-is-lambic-button-wrapper button:hover {
-  background: linear-gradient(to top, rgba(10,10,10,0.6), rgba(147,181,145,0.6)), rgb(147,181,145);
-  color: #f1ca54;
-  border-color: #ffd557;
+  background: linear-gradient(to top, rgba(10,10,10,0.8), rgba(147,181,145,0.8)), rgb(147,181,145);
+  color: #f2c489;
+  border-color: #f2c489;
 }
 
 /* ===================== CATEGORIES GRID =================== */
@@ -281,7 +375,7 @@ a { color: inherit; text-decoration: none; }
       rgba(0,0,0,0.9) 0%,  /* left black */
       rgba(0,0,0,0) 50%,   /* middle transparent */
       rgba(0,0,0,0.9) 100% /* right black */
-    ), url("/images/categories/categories_backdrop.jpg");
+    ), url("/images/landing/categories/categories_backdrop.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -306,7 +400,7 @@ a { color: inherit; text-decoration: none; }
   border-radius: 12px;
   cursor: pointer;
   aspect-ratio: 4 / 3; 
-  transition: transform 0.3s ease;
+  transition: transform 0.4s ease;
   box-shadow: 4px 4px 10px rgba(0,0,0,0.9);
   z-index: 1;;
 }
@@ -366,95 +460,4 @@ a { color: inherit; text-decoration: none; }
     rgba(0,0,0,0) 100%);
 
   z-index: -1;
-}
-
-/* ===================== LANDING PAGE'S FOOTER =================== */
-
-.footer {
-  background-color: #000;
-  color: #fff;
-  font-family: "josefin Sans", serif;
-  padding: 3rem 2rem;
-  position: relative;
-}
-
-.footer-content {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  flex-wrap: wrap;
-}
-
-.footer-links {
-  text-align: center;
-  flex: 1 1 100%;
-  margin-bottom: 2rem;
-}
-
-.footer-title {
-  font-weight: bold;
-  margin-bottom: 1rem;
-  font-size: 1.5rem;
-}
-
-.footer-links ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  font-size: 1.4rem;
-}
-
-.footer-links li {
-  margin: 0.3rem 0;
-}
-
-.footer-links a {
-  color: #f2c489;
-  text-decoration: none;
-  transition: color 0.2s;
-
-}
-
-.footer-links a:hover {
-  color: #93b591;
-  text-shadow: rgba(255, 255, 255, 0.3) 2px 1px 3px;
-}
-
-.footer-social {
-  position: absolute;
-  bottom: 1.5rem;
-  right: 4rem;
-  display: flex;
-  gap: 1rem;
-}
-
-.footer-social a {
-  color: #f2c489;
-  font-size: 3.5rem;
-  transition: color 0.2s;
-}
-
-.footer-social a:hover {
-  color: #ffff;
-}
-
-@media (max-width: 768px) {
-  .footer-content {
-    flex-direction: column;       /* stack links + social vertically */
-    align-items: center;          /* center everything horizontally */
-  }
-
-  .footer-links {
-    text-align: center;           /* already centered */
-    margin: 2rem;
-  }
-
-  .footer-social {
-    position: static;             /* remove absolute */
-    display: flex;
-    justify-content: center;      /* center icons horizontally */
-    gap: 1rem;
-  }
 }
