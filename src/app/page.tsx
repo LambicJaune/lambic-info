@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Banner from "./landing/Banner";
 import WhatIsLambic from "./landing/WhatIsLambic";
 import Categories from "./landing/Categories";
-import Footer from "./components/GenericFooter";
+import Footer from "./components/GenericFooter/GenericFooter";
 import Image from "next/image";
 
 export default function Home() {

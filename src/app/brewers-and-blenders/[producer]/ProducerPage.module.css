@@ -300,3 +300,150 @@
   .categoriesGrid { grid-template-columns: 1fr; padding: 2rem 1rem; }
   .zwanzeGrid { grid-template-columns: 1fr; }
 }
+
+/* ================= BEER LIST SPECIFIC ================= */
+
+.categoriesTitleBanner {
+  width: 100%;
+  text-align: center;
+  padding: 2rem 0; /* Vertical breathing room */
+}
+
+.categoriesTitleBanner h1 {
+  display: inline-block; /* Crucial: the box only grows as wide as the text */
+  margin: 0 auto;
+  
+  background-image: url("/images/shared/black_paint_stroke.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 100% 220%;
+  
+  color: #f1ca54;
+  font-family: "RivannaNF", serif;
+  font-size: clamp(2.7rem, 5vw, 3.1rem); 
+  font-weight: 500;
+  text-shadow: 2px 3px 0 rgba(0,0,0,0.8), 3px 4px 2px rgba(241,202,84,0.8);
+  
+  padding: 2rem 6rem; 
+  
+  line-height: 1.2;
+  text-transform: capitalize;
+}
+
+.beerListGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem; 
+  width: 100%;
+}
+
+.beerItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: -1.5rem; 
+  margin-bottom: -1.5rem; 
+}
+
+.beerName {
+  color: #f1ca54;
+  font-family: "RivannaNF", serif;
+  font-size: 1.8rem;
+  font-weight: 500;
+  line-height: 1.2;
+  text-shadow: 2px 2px 0 rgba(0,0,0,0.8), 4px 4px 12px rgba(0,0,0,0.8);
+  
+  /* The Stroke is now attached to the text */
+  background-image: url("/images/shared/black_paint_stroke.png");
+  background-size: 100% 100%; /* Force it to cover the text area */
+  background-repeat: no-repeat;
+  background-position: center center;
+  
+  /* PADDING is the secret: it creates the "safe zone" for the stroke */
+  padding: 7rem 6rem; 
+  width: 100%;
+  min-height: 140px;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Responsive fixes to keep the stroke from looking like a thin line */
+@media (max-width: 1300px) { 
+  .categoriesTitleBanner h1 { margin-bottom: -2rem; padding: 2rem 7rem; }
+  .beerListGrid { grid-template-columns: repeat(2, 1fr); gap: 0rem; } 
+  .beerName { font-size: 1.6rem; padding: 9rem 4rem; } 
+  .beerItem { margin-top: -2rem; margin-bottom: -2rem; }
+}
+
+@media (max-width: 600px) { 
+  .categoriesTitleBanner h1 { width: 95%; margin-bottom: -2rem; }
+  .beerListGrid { grid-template-columns: 1fr; gap: 0rem; } 
+  .beerName { font-size: 1.6rem; padding: 7rem 3.5rem; } 
+  .beerItem { margin-top: -2.5rem; margin-bottom: -2.5rem; }
+}
+
+/* ===================== SPECIFIC BEER PAGE =================== */
+
+.labelImage {
+  border: 10px solid #fff;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  transform: rotate(1.5deg);
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+.labelImage:hover {
+  transform: rotate(0deg) scale(1.02);
+}
+
+/* Bottle Log Table */
+.logTable {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255, 255, 255, 0.4);
+  color: #000;
+  margin-bottom: 2rem;
+}
+
+.logTable th {
+  background: rgba(0, 0, 0, 0.8);
+  color: #f1ca54;
+  font-size: 1.6rem;
+  font-weight: 500;
+  text-align: left;
+  padding: 1rem;
+  font-family: "RivannaNF", serif;
+  text-transform: uppercase;
+}
+
+.logTable td {
+  padding: 1rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  font-size: 1.3rem;
+}
+
+.logTable tr:hover {
+  background: rgba(241, 202, 84, 0.1);
+}
+
+/* Accordion Marker Fix */
+.accordionDetails summary h2::after {
+  content: "+";
+  font-size: 1.8rem;
+  margin-left: 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid #000;
+}
+
+.accordionDetails[open] summary h2::after {
+  content: "−";
+}

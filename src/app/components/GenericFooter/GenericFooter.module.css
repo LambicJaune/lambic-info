@@ -1,0 +1,90 @@
+/* ===================== FOOTER =================== */
+
+.footer {
+  background-color: #000;
+  color: #fff;
+  font-family: "josefin Sans", serif;
+  padding: 3rem 2rem;
+  position: relative;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+
+.footer-links {
+  text-align: center;
+  flex: 1 1 100%;
+  margin-bottom: 2rem;
+}
+
+.footer-title {
+  font-weight: bold;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+.footer-links li {
+  margin: 0.3rem 0;
+}
+
+.footer-links a {
+  color: #f2c489;
+  text-decoration: none;
+  transition: color 0.2s;
+
+}
+
+.footer-links a:hover {
+  color: #93b591;
+  text-shadow: rgba(255, 255, 255, 0.3) 2px 1px 3px;
+}
+
+.footer-social {
+  position: absolute;
+  bottom: 1.5rem;
+  right: 4rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.footer-social a {
+  color: #f2c489;
+  font-size: 3.5rem;
+  transition: color 0.2s;
+}
+
+.footer-social a:hover {
+  color: #ffff;
+}
+
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;       /* stack links + social vertically */
+    align-items: center;          /* center everything horizontally */
+  }
+
+  .footer-links {
+    text-align: center;           /* already centered */
+    margin: 2rem;
+  }
+
+  .footer-social {
+    position: static;             /* remove absolute */
+    display: flex;
+    justify-content: center;      /* center icons horizontally */
+    gap: 1rem;
+  }
+}

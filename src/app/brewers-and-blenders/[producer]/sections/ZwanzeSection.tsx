@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import styles from "../../ProducerPage.module.css";
+import styles from "@/app/brewers-and-blenders/[producer]/ProducerPage.module.css";
 
 interface Beer {
     id: number;

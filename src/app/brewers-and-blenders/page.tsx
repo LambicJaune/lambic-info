@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import Footer from "@/app/components/GenericFooter";
+import Footer from "@/app/components/GenericFooter/GenericFooter";
 import GenericBanner from "@/app/components/GenericBanner/GenericBanner";
 import styles from "./BrewersOverview.module.css";
 

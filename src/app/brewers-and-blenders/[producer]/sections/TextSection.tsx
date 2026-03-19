@@ -1,6 +1,6 @@
 // src/app/brewers-and-blenders/[producer]/components/sections/TextSection.tsx
 "use client";
-import styles from "../../ProducerPage.module.css";
+import styles from "@/app/brewers-and-blenders/[producer]/ProducerPage.module.css";
 
 interface Props {
     title: string;

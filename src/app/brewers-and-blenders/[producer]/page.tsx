@@ -1,15 +1,17 @@
 import Image from "next/image";
 import { producersMockData } from "./mockData";
 import styles from "./ProducerPage.module.css";
-import TextSection from "./components/sections/TextSection";
-import ZwanzeSection from "./components/sections/ZwanzeSection";
+import Link from "next/link";
 import GenericBanner from "@/app/components/GenericBanner/GenericBanner";
-import Footer from "@/app/components/GenericFooter";
+import Footer from "@/app/components/GenericFooter/GenericFooter";
+import TextSection from "./sections/TextSection";
+import ZwanzeSection from "./sections/ZwanzeSection";
 import { FaInstagram, FaFacebookF, FaGlobe, FaMapMarkerAlt, FaPhone, FaClock } from "react-icons/fa";
 
 export default async function ProducerPage({ params }: { params: Promise<{ producer: string }> }) {
     const { producer } = await params;
-    const producerData = producersMockData[producer.toLowerCase()];
+    const producerKey = producer.toLowerCase();
+    const producerData = producersMockData[producerKey];
 
     if (!producerData) return <div>Producer not found</div>;
 
@@ -87,14 +89,28 @@ export default async function ProducerPage({ params }: { params: Promise<{ produ
                         <section className={styles.section}>
                             <h2 className={styles.centeredTitle}>Beers</h2>
                             <div className={styles.categoriesGrid}>
-                                {producerData.beerCategories.map((cat, i) => (
-                                    <div key={i} className={styles.categoryCard}>
-                                        <Image src={cat.image} alt={cat.name} fill style={{ objectFit: "cover" }} />
-                                        <div className={styles.categoryOverlay}>
-                                            <h3>{cat.name}</h3>
-                                        </div>
-                                    </div>
-                                ))}
+                                {producerData.beerCategories.map((cat, i) => {
+                                    // Create a URL-friendly slug for the category (e.g., "Fruit-lambic" -> "fruit-lambic")
+                                    const categorySlug = cat.name.toLowerCase().replace(/\s+/g, '-');
+                                    
+                                    return (
+                                        <Link 
+                                            key={i} 
+                                            href={`/brewers-and-blenders/${producer}/${categorySlug}`} 
+                                            className={styles.categoryCard}
+                                        >
+                                            <Image 
+                                                src={cat.image} 
+                                                alt={cat.name} 
+                                                fill 
+                                                style={{ objectFit: "cover" }} 
+                                            />
+                                            <div className={styles.categoryOverlay}>
+                                                <h3>{cat.name}</h3>
+                                            </div>
+                                        </Link>
+                                    );
+                                })}
                             </div>
                         </section>
 
