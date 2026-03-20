@@ -18,7 +18,7 @@ const brewers = [
 export default function BrewersOverview() {
     return (
         <>
-            <GenericBanner />
+            <GenericBanner backLink="/" />
             <main className={styles.main}>
                 <section className={styles.categoriesGrid}>
                     {brewers.map((brewery) => {

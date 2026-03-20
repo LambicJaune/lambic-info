@@ -369,6 +369,7 @@
   align-items: center;
   justify-content: center;
   text-align: center;
+  cursor: default;
 }
 
 /* Responsive fixes to keep the stroke from looking like a thin line */

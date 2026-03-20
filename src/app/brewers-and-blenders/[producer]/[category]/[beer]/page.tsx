@@ -13,12 +13,12 @@ export default async function BeerDetailPage({ params }: { params: Promise<{ pro
     if (!beerData) {
         return (
             <>
-                <GenericBanner />
+                <GenericBanner backLink={`/brewers-and-blenders/${producer}/${category}`} />
                 <main className={styles.pageContainer}>
-                    <div style={{ textAlign: "center", padding: "10rem 2rem", color: "white" }}>
+                    <div style={{ textAlign: "center", padding: "10rem 2rem", color: "black" }}>
                         <h1 className={styles.centeredTitle}>Beer Details Coming Soon</h1>
                         <p style={{ marginBottom: "2rem" }}>We are currently gathering historical data for {beer.replace(/-/g, ' ')}.</p>
-                        <Link href={`/brewers-and-blenders/${producer}/${category}`} style={{ color: "#f1ca54", textDecoration: "underline" }}>
+                        <Link href={`/brewers-and-blenders/${producer}/${category}`} style={{ color: "#f1ca54", textShadow: "2px 2px 1px rgba(0,0,0,0.7)", textDecoration: "underline", fontSize: "1.3em" }}>
                             Return to {category.replace(/-/g, ' ')} list
                         </Link>
                     </div>

@@ -29,7 +29,7 @@ export default async function ProducerPage({ params }: { params: Promise<{ produ
 
     return (
         <>
-            <GenericBanner />
+            <GenericBanner backLink="/brewers-and-blenders" />
             <main className={styles.pageContainer}>
                 <section className={styles.pageTitleBanner}>
                     <h1>{producerData.name}</h1>

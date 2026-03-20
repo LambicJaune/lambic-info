@@ -15,7 +15,7 @@ export default async function BeerListPage({ params }: { params: Promise<{ produ
     if (!producerData || !beerList) {
         return (
             <>
-                <GenericBanner />
+                <GenericBanner backLink={`/brewers-and-blenders/${producer}`} />
                 <main className={styles.pageContainer}>
                     <div style={{ textAlign: "center", padding: "10rem 2rem", color: "white" }}>
                         <h1 className={styles.centeredTitle}>List not found</h1>
@@ -67,7 +67,7 @@ export default async function BeerListPage({ params }: { params: Promise<{ produ
                         </div>
 
                         <div style={{ textAlign: "center", marginTop: "5rem", paddingBottom: "4rem" }}>
-                            <Link href={`/brewers-and-blenders/${producer}`} className={styles.centeredTitle} style={{ fontSize: "1.5rem" }}>
+                            <Link href={`/brewers-and-blenders/${producer}`} className={styles.centeredTitle} style={{ fontSize: "1.5rem", }}>
                                 ← Back to {producerData.name} Overview
                             </Link>
                         </div>
