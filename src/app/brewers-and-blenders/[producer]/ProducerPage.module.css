@@ -100,12 +100,19 @@
   font-size: 2rem;
   justify-content: center;
   gap: 1.8rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.1); 
+  padding-top: 1.5rem;
+  margin-top: 0.5rem;
 }
 
 .socialLinks a {
   color: #f1ca54;
   filter: drop-shadow(2px 2px 1px rgba(0,0,0,0.9));
-  transition: color 0.3s ease;
+  transition: transform 0.3s ease; 
+}
+
+.socialLinks a:hover {
+  transform: scale(1.1);
 }
 
 /* ================= BANNER IMAGE ================= */
@@ -148,7 +155,7 @@
 .section summary::-webkit-details-marker { display: none; }
 
 .section summary h2 {
-  margin: 1rem 0;
+  margin: 1rem 0 2rem 0;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -173,7 +180,7 @@
   text-align: center;
   font-size: 2.2rem;
   width: 100%;
-  margin-bottom: 0.5rem;
+  margin-bottom: 2rem;
 }
 
 .section details[open] summary h2::after { content: "−"; }
@@ -259,7 +266,7 @@
 .zwanzeImageWrapper {
   position: absolute;
   inset: 0;
-  z-index: 1; /* Dessous */
+  z-index: 1; 
 }
 
 .zwanzeOverlay {
@@ -269,7 +276,7 @@
   align-items: center;
   justify-content: center;
   background: rgba(0, 0, 0, 0.45);
-  z-index: 10; /* Force le texte au premier plan */
+  z-index: 10; 
   pointer-events: none;
 }
 
@@ -354,13 +361,13 @@
   line-height: 1.2;
   text-shadow: 2px 2px 0 rgba(0,0,0,0.8), 4px 4px 12px rgba(0,0,0,0.8);
   
-  /* The Stroke is now attached to the text */
+  /* Stroke attached to the text */
   background-image: url("/images/shared/black_paint_stroke.png");
   background-size: 100% 100%; /* Force it to cover the text area */
   background-repeat: no-repeat;
   background-position: center center;
   
-  /* PADDING is the secret: it creates the "safe zone" for the stroke */
+  /* "Safe zone" for the stroke */
   padding: 7rem 6rem; 
   width: 100%;
   min-height: 140px;

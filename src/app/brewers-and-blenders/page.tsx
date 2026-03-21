@@ -32,7 +32,7 @@ export default function BrewersOverview() {
                             <Link key={brewery} href={href} className={styles.categoryCard}>
                                 <div className={styles.categoryImageWrapper}>
                                     <Image
-                                        src="/images/brewers-and-blenders/brewers_box.jpg"
+                                        src="/images/shared/brewers_box.jpg"
                                         alt={brewery}
                                         fill
                                         style={{ objectFit: "cover" }}

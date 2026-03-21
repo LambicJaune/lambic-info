@@ -1,0 +1,288 @@
+/* ================= PAGE BASE ================= */
+.pageContainer {
+  width: 100%;
+  min-height: 100vh;
+  background-image: url("/images/brewers-and-blenders/overview_bg.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+}
+
+/* ================= TITLE BANNER ================= */
+.eventTitleBanner {
+  width: 100%;
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.eventTitleBanner h1 {
+  display: inline-block;
+  background-image: url("/images/shared/black_paint_stroke.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 100% 220%;
+  color: #f1ca54;
+  font-family: "RivannaNF", serif;
+  font-weight: 500;
+  font-size: clamp(2.5rem, 5vw, 3.1rem);
+  padding: 2rem 6rem;
+  text-shadow: 2px 3px 0 rgba(0,0,0,0.8), 3px 4px 2px rgba(241,202,84,0.8);
+  line-height: 1.2;
+  margin: 0;
+}
+
+.noTransform { text-transform: none; }
+
+/* ================= STATUS BADGES ================= */
+.statusBadge {
+  display: inline-block;
+  padding: 0.5rem 0.8rem 0.3rem;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border: 1px solid transparent;
+}
+
+.statusActive { background-color: #d4edda; color: #155724; border-color: #c3e6cb; }
+.statusOnHiatus { background-color: #fff3cd; color: #856404; border-color: #ffeeba; }
+.statusNotOccuringAnymore { background-color: #f8d7da; color: #721c24; border-color: #f5c6cb; }
+
+/* ================= EVENTS GRID ================= */
+.eventsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
+  padding: 6rem;
+}
+
+.countryCard {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  aspect-ratio: 4 / 3;
+  transition: transform 0.3s ease;
+  box-shadow: 4px 4px 15px rgba(0,0,0,0.6);
+  text-decoration: none;
+  background-image: url("/images/shared/brewers_box.jpg");
+  background-size: cover;
+}
+
+.countryCard:hover { transform: scale(1.03); }
+
+.eventImageWrapper { position: relative; width: 100%; height: 100%; }
+.countryCardBg { object-fit: cover; }
+
+.eventCard {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  aspect-ratio: 4 / 3;
+  transition: transform 0.3s ease;
+  box-shadow: 4px 4px 15px rgba(0,0,0,0.6);
+  text-decoration: none;
+  background-image: url("/images/shared/places_box.jpg");
+  background-size: cover;
+}
+
+.eventCard:hover { transform: scale(1.03); }
+
+.eventCardBg { object-fit: cover; }
+
+.eventOverlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: rgba(0,0,0,0.2);
+  z-index: 2;
+}
+
+.eventOverlay h2, .eventOverlay h3 {
+  font-family: "RivannaNF", serif;
+  color: #f1ca54;
+  font-weight: 500;
+  font-size: 2.5rem;
+  padding: 1rem 3rem 0;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.9);
+  margin-bottom: 0.5rem;
+}
+
+.cardSubtitle {
+  color: #fff;
+  font-size: 1.3rem;
+  padding: 0 3rem;
+  margin-bottom: 2rem;
+  text-shadow: 2px 2px 2px #000;
+}
+
+.cardFlag {
+  width: 60px;
+  height: auto;
+  margin-top: 1rem;
+  filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));
+}
+
+/* ================= EVENT DETAIL PAGE ================= */
+.eventContent {
+  width: 100%;
+  padding: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.eventContentWrapper {
+  width: 90%;
+  max-width: 1400px;
+}
+
+/* Full Width Horizontal Info Bar */
+.eventInfoBar {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.35);
+  border: 2px solid #000;
+  border-radius: 8px;
+  margin-bottom: 4rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.eventMetaItem { text-align: center; flex: 1; }
+
+.metaLabel {
+  display: block;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 700;
+  color: #444;
+  margin-bottom: 0.6rem;
+}
+
+.metaValue {
+  font-size: 1.3rem;
+  color: #000;
+  font-weight: 600;
+  font-family: "Josefin Sans", sans-serif;
+}
+
+.eventSection { margin-bottom: 5rem; clear: both; }
+
+.eventSection h2 {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 2rem;
+  border-bottom: 2px solid #000000;
+  margin-bottom: 2rem;
+  padding-bottom: 0.5rem;
+  color: #000;
+}
+
+.eventSection p {
+  font-size: 1.4rem;
+  line-height: 1.8;
+  color: #1a1a1a;
+  text-align: justify;
+}
+
+.floatingImageWrapper {
+  float: right;
+  margin-left: 3rem;
+  margin-bottom: 2rem;
+  max-width: 480px;
+}
+
+.eventLabelImage {
+  border: 12px solid #fff;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+  transform: rotate(1.5deg);
+  transition: transform 0.4s ease;
+}
+
+/* ================= ACCORDION & LOG TABLE ================= */
+.accordionDetails { width: 100%; margin-top: 5rem; }
+.accordionDetails summary { cursor: pointer; list-style: none; outline: none; }
+.accordionDetails summary::-webkit-details-marker { display: none; }
+
+.centeredTitle {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.centeredTitle::after {
+  content: "+";
+  font-size: 1.8rem;
+  margin-left: 1.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  border: 2px solid #000;
+}
+
+/* Bottle Log Table Style */
+.logTable {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255, 255, 255, 0.4);
+  color: #000;
+  margin-bottom: 2rem;
+}
+
+.logTable th {
+  background: rgba(0, 0, 0, 0.8);
+  color: #f1ca54;
+  font-size: 1.9rem;
+  font-weight: 500;
+  text-align: left;
+  padding: 1rem;
+  font-family: "RivannaNF", serif;
+  text-transform: uppercase;
+}
+
+.logTable td {
+  padding: 1rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  font-size: 1.3rem;
+}
+
+.logTable tr:hover {
+  background: rgba(241, 202, 84, 0.15);
+}
+
+/* Accordion Marker */
+.accordionDetails summary h2::after {
+  content: "+";
+  font-size: 1.8rem;
+  margin-left: 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid #000;
+}
+
+.accordionDetails[open] summary h2::after {
+  content: "−";
+}
+
+@media (max-width: 900px) {
+  .eventsGrid { grid-template-columns: 1fr; padding: 2rem; }
+  .eventInfoBar { flex-direction: column; gap: 2rem; }
+  .floatingImageWrapper { float: none; margin: 0 auto 2rem auto; display: block; }
+}

@@ -10,11 +10,11 @@ interface Category {
 
 const categories: Category[] = [
     { name: "Brewers & Blenders", image: "/images/landing/categories/brewers_and_blenders.jpg", link: "/brewers-and-blenders" },
-    { name: "Experimental producers", image: "/images/landing/categories/experimental_producers.jpg", link: "/categories/experimental_producers" },
-    { name: "Closed producers", image: "/images/landing/categories/closed_producers.jpg", link: "/categories/closed_producers" },
-    { name: "Lambic places", image: "/images/landing/categories/lambic_places.png", link: "/categories/lambic_places" },
-    { name: "Lambic events", image: "/images/landing/categories/lambic_events.jpg", link: "/categories/lambic_events" },
-    { name: "Lambic travels", image: "/images/landing/categories/lambic_travels.jpg", link: "/categories/lambic_travels" },
+    { name: "Experimental producers", image: "/images/landing/categories/experimental_producers.jpg", link: "/experimental_producers" },
+    { name: "Closed producers", image: "/images/landing/categories/closed_producers.jpg", link: "/closed-producers" },
+    { name: "Lambic places", image: "/images/landing/categories/lambic_places.png", link: "/lambic-places" },
+    { name: "Lambic events", image: "/images/landing/categories/lambic_events.jpg", link: "/lambic-events" },
+    { name: "Lambic travels", image: "/images/landing/categories/lambic_travels.jpg", link: "/lambic-travels" },
 ];
 
 export default function Categories() {
