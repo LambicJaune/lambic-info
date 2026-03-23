@@ -87,11 +87,11 @@ export default async function BeerDetailPage({ params }: { params: Promise<{ pro
                                                 .sort((a, b) => a.displayOrder - b.displayOrder)
                                                 .map((entry) => (
                                                     <tr key={entry.id}>
-                                                        <td data-label="Date">{entry.date}</td>
-                                                        <td data-label="Season">{entry.season}</td>
-                                                        <td data-label="Count">{entry.bottleCount || "—"}</td>
-                                                        <td data-label="Size">{entry.size}</td>
-                                                        <td data-label="Notes">{entry.notes}</td>
+                                                        <td>{entry.date}</td>
+                                                        <td>{entry.season}</td>
+                                                        <td>{entry.bottleCount || "—"}</td>
+                                                        <td>{entry.size}</td>
+                                                        <td>{entry.notes}</td>
                                                     </tr>
                                                 ))}
                                         </tbody>

@@ -33,7 +33,7 @@ export const placesMockData: { [key: string]: CountryData } = {
     belgium: {
         name: "Belgium",
         image: "/images/places/belgium-hero.jpg",
-        flagIcon: "/images/flags/be.png",
+        flagIcon: "/images/shared/worldwide.png",
         places: {
             "3-fonteinen-restaurant": {
                 id: "3-fonteinen-restaurant",

@@ -17,10 +17,10 @@ export default function LambicEventsCountriesPage() {
                     {Object.entries(EventsMockData).map(([slug, country]) => (
                         <Link href={`/lambic-events/${slug}`} key={slug} className={styles.countryCard}>
                             <div className={styles.eventImageWrapper}>
+                                <img src={country.flagIcon} alt="flag" className={styles.cardFlag} />
                                 <div className={styles.eventOverlay}>
                                     <h2>{country.countryName}</h2>
-                                    <img src={country.flagIcon} alt="flag" className={styles.cardFlag} />
-                                </div>
+                                </div>                     
                             </div>
                         </Link>
                     ))}

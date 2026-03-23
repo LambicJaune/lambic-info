@@ -42,7 +42,7 @@ export const EventsMockData: { [key: string]: CountryEventData } = {
     worldwide: {
         countryName: "Worldwide",
         countryCode: "ww",
-        flagIcon: "/images/flags/worldwide.png",
+        flagIcon: "/images/shared/worldwide.png",
         events: {
             "zwanze-day": {
                 id: "zwanze-day",
@@ -78,7 +78,7 @@ export const EventsMockData: { [key: string]: CountryEventData } = {
     belgium: {
         countryName: "Belgium",
         countryCode: "be",
-        flagIcon: "/images/flags/be.png",
+        flagIcon: "/images/shared/worldwide.png",
         events: {
             "nacht-van-de-grote-dorst": {
                 id: "nacht-van-de-grote-dorst",
@@ -97,7 +97,7 @@ export const EventsMockData: { [key: string]: CountryEventData } = {
     usa: {
         countryName: "USA",
         countryCode: "us",
-        flagIcon: "/images/flags/us.png",
+        flagIcon: "/images/shared/worldwide.png",
         events: {
             "shelton-brothers-festival": {
                 id: "shelton-brothers-festival",

@@ -98,18 +98,18 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  background: rgba(0,0,0,0.2);
-  z-index: 2;
 }
 
 .eventOverlay h2, .eventOverlay h3 {
   font-family: "RivannaNF", serif;
   color: #f1ca54;
   font-weight: 500;
-  font-size: 2.5rem;
-  padding: 1rem 3rem 0;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.9);
-  margin-bottom: 0.5rem;
+  font-size: 2.8rem;
+  padding: 0.5rem 3rem;
+  text-shadow: 2px 2px 2.5px rgba(0,0,0,1), 2px 3px 3px rgba(255, 255, 255, 0.7), 2px 7px 4px rgba(0,0,0,1);
+  position: relative;
+  display: inline-block;
+  z-index: 10;
 }
 
 .cardSubtitle {
@@ -121,10 +121,14 @@
 }
 
 .cardFlag {
-  width: 60px;
-  height: auto;
-  margin-top: 1rem;
-  filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));
+  height: 10rem;
+  width: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1; 
+  opacity: 0.7;
 }
 
 /* ================= EVENT DETAIL PAGE ================= */
@@ -281,8 +285,12 @@
   content: "−";
 }
 
-@media (max-width: 900px) {
-  .eventsGrid { grid-template-columns: 1fr; padding: 2rem; }
+@media (max-width: 1200px) {
+  .eventsGrid { grid-template-columns: repeat(2, 1fr); padding: 2rem; }
+}
+
+@media (max-width: 668px) {
+  .eventsGrid { grid-template-columns: 1fr; padding: 3rem; }
   .eventInfoBar { flex-direction: column; gap: 2rem; }
   .floatingImageWrapper { float: none; margin: 0 auto 2rem auto; display: block; }
 }

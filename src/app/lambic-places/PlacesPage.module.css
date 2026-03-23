@@ -108,13 +108,13 @@
 .placeOverlay h2, 
 .placeOverlay h3 {
   font-size: clamp(2rem, 9cqw, 2.7rem);
-  padding: 1rem 1rem;
-  line-height: 1.1;
+  font-family: "RivannaNF", serif;
+  color: #f1ca54;
   font-weight: 500;
-  padding: 0 3rem;
-  margin: 0;
-  text-shadow: 2px 2px 0 rgba(0,0,0,0.8), 4px 4px 12px rgba(0,0,0,0.8);
+  padding: 0.5rem 3rem;
+  text-shadow: 2px 2px 2.5px rgba(0,0,0,1), 2px 3px 3px rgba(255, 255, 255, 0.7), 2px 7px 4px rgba(0,0,0,1);
   position: relative;
+  display: inline-block;
   z-index: 1;
 }
 
@@ -126,16 +126,25 @@
   position: absolute;
   inset: -0.2rem 2rem;
   border-radius: 12px;
-  backdrop-filter: blur(1px);
+  backdrop-filter: blur(0.8px);
   mask-image: radial-gradient(ellipse 100% 70% at center, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 100%);
   -webkit-mask-image: radial-gradient(ellipse 100% 70% at center, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 100%);
   z-index: -1;
 }
 
+.placeImageWrapper {
+    justify-content: center;
+    align-items: center;
+}
+
 .cardFlag {
-  width: 40px;
+  width: 35cqw;
   margin-top: 10px;
   filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));
+  top: 49%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
 }
 
 .cardSubtitle {

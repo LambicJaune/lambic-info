@@ -8,6 +8,14 @@
   background-size: cover;
 }
 
+.pageContent .contentWrapper {
+  width: 90%;
+  max-width: 1900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
 /* ================= TITLE BANNER ================= */
 .pageTitleBanner {
   width: 100%;
@@ -48,7 +56,7 @@
 .sidebar {
   float: left;
   width: 300px;
-  padding: 2rem;
+  padding: 0rem;
   background: rgba(0,0,0,0.15);
   border-radius: 10px;
   border: 3px solid black;
@@ -61,10 +69,10 @@
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
-.overview {
+.overviewBanner {
   flex: 1 1 0;
   min-width: 250px;
 }
@@ -75,7 +83,6 @@
   width: 100%;
   aspect-ratio: 1 / 1;
   max-width: 350px;
-  margin-bottom: 2rem;
   margin-left: auto;
   margin-right: auto;
 }
@@ -84,11 +91,11 @@
 .breweryInfo {
   list-style: none;
   padding: 0;
-  margin: 0 0 1.5rem 0;
+  margin: 0 0 1rem 0;
 }
 
 .breweryInfo li {
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.5rem;
   text-align: center;
   font-size: 1.3rem;
 }
@@ -101,8 +108,7 @@
   justify-content: center;
   gap: 1.8rem;
   border-top: 1px solid rgba(0, 0, 0, 0.1); 
-  padding-top: 1.5rem;
-  margin-top: 0.5rem;
+  padding-top: 1rem;
 }
 
 .socialLinks a {
@@ -126,54 +132,10 @@
   margin-bottom: 2rem;
 }
 
-/* ================= SECTIONS ================= */
-.section {
-  margin-bottom: 1rem;
+/* ================= SECTIONS & ACCORDION SYSTEM ================= */
+.section, .sectionFull, .accordionSection {
+  margin-bottom: 2rem;
   clear: both;
-}
-
-.section h2 {
-  text-align: center;
-  font-size: 2rem;
-  margin-bottom: 1.5rem;
-}
-
-.section p, .sectionFull p {
-  line-height: 1.6;
-  text-align: justify;
-  font-size: 1.5rem;
-  white-space: pre-line;
-  margin-top: -1rem;
-}
-
-/* ACCORDION */
-.section summary {
-  list-style: none;
-  cursor: pointer;
-}
-
-.section summary::-webkit-details-marker { display: none; }
-
-.section summary h2 {
-  margin: 1rem 0 2rem 0;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-}
-
-.section summary h2::after {
-  content: "+";
-  font-size: 1.6rem;
-  margin-left: 0.5rem;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 25px;
-  height: 25px;
-  border-radius: 50%;
-  border: 2px solid #000;
-  background: rgba(0,0,0,0.15);
 }
 
 .centeredTitle {
@@ -183,7 +145,68 @@
   margin-bottom: 2rem;
 }
 
-.section details[open] summary h2::after { content: "−"; }
+.section p, .sectionFull p {
+  line-height: 1.6;
+  text-align: justify;
+  font-size: 1.5rem;
+  white-space: pre-line;
+  margin: 2rem 0 1rem;
+}
+
+/* Fix for "Pure Selectors" Error: We nest tags under local classes */
+.section summary, 
+.accordionSection summary {
+  list-style: none;
+  outline: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.section summary::-webkit-details-marker,
+.accordionSection summary::-webkit-details-marker { 
+  display: none; 
+}
+
+/* Circle Icon Logic */
+.section summary .centeredTitle,
+.accordionSection summary .centeredTitle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0;
+}
+
+.section summary .centeredTitle::after,
+.accordionSection summary .centeredTitle::after {
+  content: "+";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 2rem;
+  height: 2rem;
+  font-size: 1.3rem;
+  margin-left: 1rem;
+  border: 2px solid #000;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.15);
+  color: #000;
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  line-height: 1;
+  flex-shrink: 0;
+  vertical-align: middle;
+  padding: 0.9rem;
+  
+}
+
+/* Switch Symbol on Open */
+.section details[open] summary .centeredTitle::after,
+.accordionSection details[open] summary .centeredTitle::after {
+  content: "−"; 
+}
 
 /* ================= CATEGORY GRID ================= */
 .categoriesGrid {
@@ -224,197 +247,25 @@
   text-shadow: 2px 2px 0 rgba(0,0,0,0.8), 4px 4px 12px rgba(0,0,0,0.8);
 }
 
-/* ================= ZWANZE GRID ================= */
-
-.sectionDescription {
-  max-width: 1200px; 
-  margin: 0 auto 2rem auto; /* Centers the block and adds space before the grid */
-  padding: 2rem 0;
-}
-
-.sectionDescription p {
-  line-height: 1.6;
-  text-align: center;
-  white-space: pre-line; 
-}
-
-.zwanzeGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-  justify-items: center;
-  margin: 4rem 0;
-  width: 100%;
-}
-
-.zwanzeButton {
-  position: relative;
-  width: 100%;
-  max-width: 20rem;
-  aspect-ratio: 1 / 1;
-  border-radius: 50%;
-  overflow: hidden;
-  box-shadow: 4px 4px 10px rgba(0,0,0,0.9);
-  transition: transform 0.3s ease;
-  cursor: pointer;
-  background: #00000018; 
-  margin-bottom: 3rem;
-}
-
-.zwanzeButton:hover { transform: scale(1.07); }
-
-.zwanzeImageWrapper {
-  position: absolute;
-  inset: 0;
-  z-index: 1; 
-}
-
-.zwanzeOverlay {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0, 0, 0, 0.45);
-  z-index: 10; 
-  pointer-events: none;
-}
-
-.zwanzeOverlay h3 {
-  font-size: 1.8rem;
-  color: #f1ca54; 
-  text-align: center;
-  line-height: 1.2;
-  margin: 0;
-  padding: 0 1rem;
-  word-break: break-word;
-  text-shadow: 2px 2px 6px rgba(0,0,0,1);
-  opacity: 1;
-  visibility: visible;
-}
-
 /* ================= RESPONSIVE ================= */
 @media (max-width:1100px) {
   .categoriesGrid { grid-template-columns: repeat(2, 1fr); }
-  .zwanzeGrid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width:768px) {
   .pageContent { padding: 1.5rem 0; }
   .mainTop { flex-direction: column; }
   .sidebar { width: 100%; float: none; margin-right: 0; margin-bottom: 2rem; }
-  .overview { width: 100%; }
   .categoriesGrid { grid-template-columns: 1fr; padding: 2rem 1rem; }
-  .zwanzeGrid { grid-template-columns: 1fr; }
 }
 
-/* ================= BEER LIST SPECIFIC ================= */
-
-.categoriesTitleBanner {
-  width: 100%;
-  text-align: center;
-  padding: 2rem 0; /* Vertical breathing room */
-}
-
-.categoriesTitleBanner h1 {
-  display: inline-block; /* Crucial: the box only grows as wide as the text */
-  margin: 0 auto;
-  
-  background-image: url("/images/shared/black_paint_stroke.png");
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: 100% 220%;
-  
-  color: #f1ca54;
-  font-family: "RivannaNF", serif;
-  font-size: clamp(2.7rem, 5vw, 3.1rem); 
-  font-weight: 500;
-  text-shadow: 2px 3px 0 rgba(0,0,0,0.8), 3px 4px 2px rgba(241,202,84,0.8);
-  
-  padding: 2rem 6rem; 
-  
-  line-height: 1.2;
-  text-transform: capitalize;
-}
-
-.beerListGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0.5rem; 
-  width: 100%;
-}
-
-.beerItem {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  margin-top: -1.5rem; 
-  margin-bottom: -1.5rem; 
-}
-
-.beerName {
-  color: #f1ca54;
-  font-family: "RivannaNF", serif;
-  font-size: 1.8rem;
-  font-weight: 500;
-  line-height: 1.2;
-  text-shadow: 2px 2px 0 rgba(0,0,0,0.8), 4px 4px 12px rgba(0,0,0,0.8);
-  
-  /* Stroke attached to the text */
-  background-image: url("/images/shared/black_paint_stroke.png");
-  background-size: 100% 100%; /* Force it to cover the text area */
-  background-repeat: no-repeat;
-  background-position: center center;
-  
-  /* "Safe zone" for the stroke */
-  padding: 7rem 6rem; 
-  width: 100%;
-  min-height: 140px;
-  
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  cursor: default;
-}
-
-/* Responsive fixes to keep the stroke from looking like a thin line */
-@media (max-width: 1300px) { 
-  .categoriesTitleBanner h1 { margin-bottom: -2rem; padding: 2rem 7rem; }
-  .beerListGrid { grid-template-columns: repeat(2, 1fr); gap: 0rem; } 
-  .beerName { font-size: 1.6rem; padding: 9rem 4rem; } 
-  .beerItem { margin-top: -2rem; margin-bottom: -2rem; }
-}
-
-@media (max-width: 600px) { 
-  .categoriesTitleBanner h1 { width: 95%; margin-bottom: -2rem; }
-  .beerListGrid { grid-template-columns: 1fr; gap: 0rem; } 
-  .beerName { font-size: 1.6rem; padding: 7rem 3.5rem; } 
-  .beerItem { margin-top: -2.5rem; margin-bottom: -2.5rem; }
-}
-
-/* ===================== SPECIFIC BEER PAGE =================== */
-
-.labelImage {
-  border: 10px solid #fff;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-  transform: rotate(1.5deg);
-  height: auto;
-  transition: transform 0.3s ease;
-}
-
-.labelImage:hover {
-  transform: rotate(0deg) scale(1.02);
-}
-
-/* Bottle Log Table */
+/* ================= BEER LIST & LOG TABLE ================= */
 .logTable {
   width: 100%;
   border-collapse: collapse;
   background: rgba(255, 255, 255, 0.4);
   color: #000;
-  margin-bottom: 2rem;
+  margin: 1rem 0 2rem;
 }
 
 .logTable th {
@@ -423,42 +274,18 @@
   font-size: 1.6rem;
   font-weight: 500;
   text-align: left;
-  padding: 1rem;
+  padding: 1rem 0 0 3rem;
   font-family: "RivannaNF", serif;
   text-transform: uppercase;
 }
 
 .logTable td {
-  padding: 1rem;
+  padding: 1rem 0 0 3rem;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  font-size: 1.3rem;
 }
 
-.logTable tr:hover {
-  background: rgba(241, 202, 84, 0.1);
-}
-
-/* Accordion Marker Fix */
-.accordionDetails summary h2::after {
-  content: "+";
-  font-size: 1.8rem;
-  margin-left: 1rem;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 2rem;
-  height: 2rem;
-  border-radius: 50%;
-  border: 2px solid #000;
-  box-sizing: border-box;
-  flex-shrink: 0;
-  vertical-align: middle;
-  padding: 0.9rem;
-
-}
-
-.accordionDetails[open] summary h2::after {
-  content: "−";
+.logTable tbody tr:hover {
+  background: rgba(241, 202, 84, 0.2);
 }
 
 @media (max-width: 768px) {
@@ -510,4 +337,53 @@
     text-align: left;
     margin-right: 1rem;
   }
+}
+
+/* ================= BEER LIST SPECIFIC ================= */
+.categoriesTitleBanner {
+  width: 100%;
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.categoriesTitleBanner h1 {
+  display: inline-block;
+  margin: 0 auto;
+  background-image: url("/images/shared/black_paint_stroke.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 100% 220%;
+  color: #f1ca54;
+  font-family: "RivannaNF", serif;
+  font-size: clamp(2.7rem, 5vw, 3.1rem); 
+  font-weight: 500;
+  text-shadow: 2px 3px 0 rgba(0,0,0,0.8), 3px 4px 2px rgba(241,202,84,0.8);
+  padding: 2rem 6rem; 
+  line-height: 1.2;
+  text-transform: capitalize;
+}
+
+.beerListGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem; 
+  width: 100%;
+}
+
+.beerName {
+  color: #f1ca54;
+  font-family: "RivannaNF", serif;
+  font-size: 1.8rem;
+  font-weight: 500;
+  background-image: url("/images/shared/black_paint_stroke.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  padding: 7rem 6rem; 
+  width: 100%;
+  min-height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
