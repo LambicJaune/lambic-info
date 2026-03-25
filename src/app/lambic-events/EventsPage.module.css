@@ -49,7 +49,7 @@
 .statusOnHiatus { background-color: #fff3cd; color: #856404; border-color: #ffeeba; }
 .statusNotOccuringAnymore { background-color: #f8d7da; color: #721c24; border-color: #f5c6cb; }
 
-/* ================= EVENTS GRID ================= */
+/* ================= EVENTS GRID & CARDS ================= */
 .eventsGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -131,7 +131,7 @@
   opacity: 0.7;
 }
 
-/* ================= EVENT DETAIL PAGE ================= */
+/* ================= EVENT DETAIL CONTENT ================= */
 .eventContent {
   width: 100%;
   padding: 2rem 0;
@@ -145,7 +145,6 @@
   max-width: 1400px;
 }
 
-/* Full Width Horizontal Info Bar */
 .eventInfoBar {
   width: 100%;
   display: flex;
@@ -157,12 +156,16 @@
   border-radius: 8px;
   margin-bottom: 4rem;
   box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  backdrop-filter: blur(5px);
 }
 
 .eventMetaItem { text-align: center; flex: 1; }
 
 .metaLabel {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
   font-size: 1rem;
   text-transform: uppercase;
   letter-spacing: 1.5px;
@@ -172,18 +175,18 @@
 }
 
 .metaValue {
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   color: #000;
   font-weight: 600;
-  font-family: "Josefin Sans", sans-serif;
 }
 
+/* ================= FLOATING IMAGE & SECTIONS ================= */
 .eventSection { margin-bottom: 5rem; clear: both; }
 
 .eventSection h2 {
   font-family: "Josefin Sans", sans-serif;
-  font-size: 2rem;
-  border-bottom: 2px solid #000000;
+  font-size: 2.2rem;
+  border-bottom: 2px solid #000;
   margin-bottom: 2rem;
   padding-bottom: 0.5rem;
   color: #000;
@@ -200,24 +203,29 @@
   float: right;
   margin-left: 3rem;
   margin-bottom: 2rem;
-  max-width: 480px;
+  display: block;
 }
 
 .eventLabelImage {
-  border: 12px solid #fff;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+  display: block;
+  max-width: 30rem; 
+  max-height: 35rem;
+  width: auto;
+  height: auto;
+  border: 0.8rem solid #fff;
+  box-shadow: 0 1rem 2.5rem rgba(0,0,0,0.25);
   transform: rotate(1.5deg);
-  transition: transform 0.4s ease;
+  transition: all 0.3s ease-in-out;
+  object-fit: contain;
 }
 
-/* ================= ACCORDION & LOG TABLE ================= */
+/* ================= TABLE & ACCORDION ================= */
 .accordionDetails { width: 100%; margin-top: 5rem; }
-.accordionDetails summary { cursor: pointer; list-style: none; outline: none; }
-.accordionDetails summary::-webkit-details-marker { display: none; }
+.accordionDetails summary { list-style: none; cursor: pointer; outline: none; }
 
 .centeredTitle {
   text-align: center;
-  font-size: 2.5rem;
+  font-size: 2.3rem;
   margin-bottom: 2rem;
   display: flex;
   justify-content: center;
@@ -226,30 +234,31 @@
 
 .centeredTitle::after {
   content: "+";
-  font-size: 1.8rem;
-  margin-left: 1.5rem;
-  display: inline-flex;
+  font-size: 1.6rem;
+  width: 26px;
+  height: 26px;
+  border: 2px solid #000;
+  border-radius: 50%;
+  background-color: #33333334;
+  display: flex;
   align-items: center;
   justify-content: center;
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
-  border: 2px solid #000;
+  margin-left: 1.5rem;
 }
 
-/* Bottle Log Table Style */
+.accordionDetails[open] .centeredTitle::after { content: "−"; }
+
 .logTable {
   width: 100%;
   border-collapse: collapse;
   background: rgba(255, 255, 255, 0.4);
   color: #000;
-  margin-bottom: 2rem;
 }
 
 .logTable th {
   background: rgba(0, 0, 0, 0.8);
   color: #f1ca54;
-  font-size: 1.9rem;
+  font-size: 1.6rem;
   font-weight: 500;
   text-align: left;
   padding: 1rem;
@@ -263,34 +272,65 @@
   font-size: 1.3rem;
 }
 
-.logTable tr:hover {
-  background: rgba(241, 202, 84, 0.15);
-}
-
-/* Accordion Marker */
-.accordionDetails summary h2::after {
-  content: "+";
-  font-size: 1.8rem;
-  margin-left: 1rem;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  border: 2px solid #000;
-}
-
-.accordionDetails[open] summary h2::after {
-  content: "−";
-}
-
+/* ================= RESPONSIVE ================= */
 @media (max-width: 1200px) {
   .eventsGrid { grid-template-columns: repeat(2, 1fr); padding: 2rem; }
 }
 
-@media (max-width: 668px) {
-  .eventsGrid { grid-template-columns: 1fr; padding: 3rem; }
-  .eventInfoBar { flex-direction: column; gap: 2rem; }
-  .floatingImageWrapper { float: none; margin: 0 auto 2rem auto; display: block; }
+@media (max-width: 768px) {
+  .eventsGrid { grid-template-columns: 1fr; padding: 2rem; }
+
+  .eventInfoBar {
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem 1rem;
+    text-align: center;
+  }
+
+  .eventSection {
+    display: block;
+    clear: both;
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .floatingImageWrapper {
+    float: none;
+    width: 100%;
+    margin: 0 auto 2.5rem auto;
+    display: block;
+  }
+
+  .eventLabelImage {
+    max-width: 30rem; 
+    max-height: 35rem;
+    width: auto;
+    height: auto; 
+    transform: none;
+    border-width: 0.6rem;
+    display: block;
+    object-fit:contain;
+    margin: 0 auto;
+  }
+
+  /* Table Card Layout */
+  .logTable thead { display: none; }
+  .logTable tr { 
+    display: block; 
+    margin-bottom: 1.5rem; 
+    border: 1px solid rgba(0,0,0,0.2); 
+    border-radius: 8px; 
+    background: rgba(255,255,255,0.6);
+  }
+  .logTable td { 
+    display: flex; 
+    justify-content: space-between; 
+    padding: 1rem; 
+  }
+  .logTable td::before { 
+    content: attr(data-label); 
+    font-weight: bold; 
+    text-transform: uppercase;
+    font-size: 0.85rem;
+  }
 }

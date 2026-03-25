@@ -1,0 +1,390 @@
+/* ================= PAGE BASE ================= */
+.pageContainer {
+  width: 100%;
+  min-height: 100vh;
+  background: url("/images/brewers-and-blenders/overview_bg.jpg") center/cover fixed;
+}
+
+/* ================= TITLE BANNER ================= */
+.pageTitleBanner {
+  width: 100%;
+  text-align: center;
+  padding: 2rem 0 2.5rem;
+}
+
+.pageTitleBanner h1 {
+  display: inline-block;
+  background-image: url("/images/shared/black_paint_stroke.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 100% 220%;
+  color: #f1ca54;
+  font-family: "RivannaNF", serif;
+  font-weight: 500;
+  font-size: clamp(2.5rem, 5vw, 3.1rem);
+  padding: 2rem 6rem;
+  text-shadow: 2px 3px 0 rgba(0,0,0,0.8), 3px 4px 2px rgba(241,202,84,0.8);
+  line-height: 1.2;
+  margin: 0;
+}
+
+.noTransform { text-transform: none; }
+
+/* ================= LAYOUT & CONTENT ================= */
+.pageContent {
+  width: 100%;
+  padding: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contentWrapper {
+  width: 90%;
+  max-width: 1400px;
+}
+
+.infoBar {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.35);
+  border: 2px solid #000;
+  border-radius: 8px;
+  margin-bottom: 4rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  backdrop-filter: blur(5px);
+}
+
+.metaItem { text-align: center; flex: 1; }
+
+.metaLabel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 700;
+  color: #444;
+  margin-bottom: 0.6rem;
+}
+
+.metaValue {
+  font-size: 1.4rem;
+  color: #000;
+  font-weight: 600;
+}
+
+/* ================= TEXT SECTIONS ================= */
+.historySection { 
+  margin-bottom: 5rem; 
+  clear: both; 
+}
+
+.sectionTitle {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 2.2rem;
+  border-bottom: 2px solid #000;
+  margin-bottom: 2rem;
+  padding-bottom: 0.5rem;
+  color: #000;
+}
+
+.richText p {
+  font-size: 1.4rem;
+  line-height: 1.8;
+  color: #1a1a1a;
+  text-align: justify;
+  margin-bottom: 1.5rem;
+}
+
+.floatingImageWrapper {
+  float: right;
+  margin-left: 3rem;
+  margin-bottom: 2rem;
+  max-width: 450px;
+}
+
+.historicalImage {
+  width: 100%;
+  height: auto;
+  border: 12px solid #fff;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+  transform: rotate(1.5deg);
+  transition: all 0.3s ease-in-out;
+}
+
+.historicalImage:hover {
+  transform: rotate(1.5deg) scale(1.05); 
+  box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+}
+
+/* ================= ACCORDION & TABLE ================= */
+.accordionSection { margin-top: 4rem; position: relative; }
+.accordionDetails summary { list-style: none; cursor: pointer; outline: none; }
+.centeredTitle { text-align: center; font-size: 2.3rem; margin-bottom: 2rem; display: flex; justify-content: center; align-items: center; }
+
+.centeredTitle::after {
+  content: "+";
+  font-size: 1.6rem;
+  width: 26px;
+  height: 26px;
+  border: 2px solid #000;
+  border-radius: 50%;
+  background-color: #33333334;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 1.5rem;
+}
+
+.accordionDetails[open] .centeredTitle::after { content: "−"; }
+
+.logTable {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255, 255, 255, 0.4);
+  color: #000;
+  margin-bottom: 5rem;
+  position: relative; 
+  z-index: 1; 
+}
+
+.logTable th {
+  background: rgba(0, 0, 0, 0.8);
+  color: #f1ca54;
+  font-size: 1.6rem;
+  font-weight: 500;
+  text-align: left;
+  padding: 1rem;
+  font-family: "RivannaNF", serif;
+  text-transform: uppercase;
+}
+
+.logTable td {
+  padding: 1rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  font-size: 1.3rem;
+}
+
+.logTable tr:hover { background: rgba(241, 202, 84, 0.15); }
+.boldCell { font-weight: 600; }
+
+/* ================= BEER IMAGE THUMBNAILS ================= */
+.imageCell { 
+  width: 120px; 
+  text-align: center; 
+  vertical-align: middle; 
+  position: relative;
+}
+
+.thumbnailContainer {
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: auto;
+  z-index: 10;
+  background: none;
+  border: none;
+  margin: 0;
+}
+
+.clickableThumb {
+  cursor: zoom-in;
+  transition: transform 0.2s ease;
+}
+
+.clickableThumb:hover {
+  transform: scale(1.08);
+}
+
+.tableThumb {
+  max-width: 10rem; 
+  /* This prevents vertical images in the table from becoming too tall */
+  max-height: 8rem; 
+  width: auto;
+  height: auto;
+  border: 2px solid #000;
+  background: #fff;
+  object-fit: contain;
+  display: block;
+  pointer-events: none; 
+}
+
+.imageStackCounter {
+  position: absolute;
+  bottom: -5px;
+  right: -5px;
+  background: #f1ca54;
+  color: #000;
+  font-size: 0.75rem;
+  padding: 2px 6px;
+  border: 1px solid #000;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: bold;
+  z-index: 11;
+  pointer-events: none; 
+}
+
+.noImageText {
+  color: rgba(0, 0, 0, 0.5);
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+/* ================= LIGHTBOX ================= */
+.lightboxOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.95);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.lightboxContent { position: relative; max-width: 90vw; max-height: 80vh; }
+
+.closeBtn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 2.5rem;
+  cursor: pointer;
+  z-index: 10001;
+}
+
+.navBtnPrev, .navBtnNext {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.1);
+  color: white;
+  border: none;
+  padding: 1.5rem;
+  cursor: pointer;
+  font-size: 2rem;
+  border-radius: 50%;
+  z-index: 10001;
+  transition: background 0.3s;
+}
+
+.navBtnPrev:hover, .navBtnNext:hover {
+  background: rgba(255,255,255,0.25);
+}
+
+.navBtnPrev { left: 1rem; }
+.navBtnNext { right: 1rem; }
+
+.imgCounter {
+  color: white;
+  text-align: center;
+  margin-top: 1rem;
+  font-family: "Josefin Sans", sans-serif;
+}
+
+/* ================= REFERENCES ================= */
+.references { padding: 3rem 0; border-top: 1px solid rgba(0,0,0,0.1); }
+.references h4 { font-size: 1.4rem; margin-bottom: 1rem; color: #3f3f3f }
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+  /* 1. RESTORE INFOBAR: Stack items vertically on mobile */
+  .infoBar {
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem 1rem;
+    text-align: center;
+  }
+
+  .metaItem {
+    width: 100%;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding-bottom: 1.5rem;
+  }
+
+  .metaItem:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  /* 2. CENTERED IMAGE: Force the history section to stack */
+  .historySection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .floatingImageWrapper {
+    float: none; /* Kill the desktop float */
+    width: 100%;
+    max-width: 600px; 
+    margin: 0 auto 2.5rem auto;
+    display: block;
+    position: relative;
+  }
+
+  .historicalImage {
+    display: block ;
+    margin: 0 auto ;
+    transform: none; /* Remove the 1.5deg tilt for cleaner mobile look */
+    border-width: 6px;
+  }
+
+  .sectionTitle {
+    text-align: center;
+    width: 100%;
+    margin-top: 1rem;
+  }
+
+  .richText p {
+    text-align: center; 
+  }
+
+  /* 3. MOBILE TABLE: The 'Card' layout */
+  .logTable thead { display: none; }
+  
+  .logTable tr { 
+    display: block; 
+    margin-bottom: 1.5rem; 
+    border: 1px solid rgba(0,0,0,0.2); 
+    border-radius: 8px; 
+    background: rgba(255,255,255,0.6);
+  }
+
+  .logTable td { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+    padding: 0.8rem; 
+    text-align: right;
+  }
+
+  .logTable td::before { 
+    content: attr(data-label); 
+    font-weight: bold; 
+    text-transform: uppercase;
+    font-size: 0.85rem;
+  }
+
+  .imageCell {
+    justify-content: flex-end; 
+    width: 100%;
+  }
+
+  .thumbnailContainer {
+    margin-right: 0.5rem;
+  }
+}

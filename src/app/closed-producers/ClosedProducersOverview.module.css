@@ -1,0 +1,206 @@
+.main {
+  min-height: 100vh;
+  padding-top: 1rem; 
+  padding-bottom: 5rem;
+  background: url("/images/brewers-and-blenders/overview_bg.jpg") center/cover fixed;
+}
+
+/* ================= TITLE BANNER ================= */
+.pageTitleBanner {
+  width: 100%;
+  text-align: center;
+  padding: 1rem 0 2rem; 
+}
+
+.pageTitleBanner h1 {
+  display: inline-block;
+  background-image: url("/images/shared/black_paint_stroke.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 100% 220%;
+  color: #f1ca54;
+  font-family: "RivannaNF", serif;
+  font-weight: 500;
+  font-size: clamp(2.5rem, 5vw, 3.1rem);
+  padding: 2rem 6rem;
+  text-shadow: 2px 3px 0 rgba(0,0,0,0.8), 3px 4px 2px rgba(241,202,84,0.8);
+  line-height: 1.2;
+  margin: 0;
+}
+
+/* ================= RESPONSIVE TITLE FIX ================= */
+@media (max-width: 768px) {
+  .pageTitleBanner h1 {
+    padding: 2.5rem 5rem; 
+    font-size: 2.7rem;
+    background-size: 100% 150%; 
+  }
+}
+
+@media (max-width: 480px) {
+  .pageTitleBanner h1 {
+    padding: 2.5rem 4rem;
+    font-size: 2.6rem;
+    background-size: 100% 180%;
+    width: 95%; /* Prevents the stroke from hitting screen edges */
+  }
+}
+
+/* ================= LAYOUT ================= */
+
+.descriptionSection {
+  max-width: 1400px;
+  margin: 0 auto 4rem;
+  padding: 0 2rem;
+}
+
+.richText p {
+  font-size: 1.4rem;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+  text-align: justify;
+}
+
+.centeredTitle {
+  text-align: center;
+  margin-bottom: 3rem;
+  font-size: 2.2rem;
+  color: #000;
+}
+
+/* ================= CATEGORIES GRID ================= */
+.categoriesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
+  padding: 0 8rem 8rem;
+}
+
+.categoryCard {
+  position: relative;
+  aspect-ratio: 4/3;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 4px 4px 10px rgba(0,0,0,0.9);
+  transition: transform 0.3s ease;
+}
+
+.categoryCard:hover { transform: scale(1.05); }
+
+.categoryOverlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
+.categoryOverlay h3 {
+  color: #f1ca54;
+  font-family: "RivannaNF", serif;
+  font-size: 2.3rem;
+  font-weight: 500;
+  text-shadow: 2px 2px 0 rgba(0,0,0,0.8), 4px 4px 12px rgba(0,0,0,0.8);
+}
+
+/* ================= DIRECTORY ACCORDION ================= */
+.directorySection {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.accordionDetails {
+  border-bottom: 2px solid rgba(0,0,0,0.2);
+  margin-bottom: 1rem;
+}
+
+.accordionDetails summary {
+  list-style: none;
+  padding: 1.5rem;
+  font-size: 1.8rem;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.accordionDetails summary::after {
+  content: "+";
+  font-size: 1.6rem;
+  width: 26px;
+  height: 26px;
+  border: 2px solid #000;
+  border-radius: 50%;
+  background-color: #33333334;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.accordionDetails[open] summary::after { content: "−"; }
+
+/* ================= TABLE & HOVER ================= */
+.tableWrapper { padding: 1rem 0 2rem; }
+
+.logTable {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.logTable th {
+  background: rgba(0, 0, 0, 0.8);
+  color: #f1ca54;
+  padding: 1rem;
+  font-size: 1.6rem;
+  font-weight: 500;
+  text-align: left;
+  font-family: "RivannaNF", serif;
+}
+
+.logTable td {
+  padding: 1rem;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  font-size: 1.3rem;
+}
+
+.logTable tbody tr:hover {
+  background: rgba(241, 202, 84, 0.2);
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 1100px) {
+  .categoriesGrid { grid-template-columns: repeat(2, 1fr); padding: 0 4rem 4rem; }
+}
+
+@media (max-width: 768px) {
+  .categoriesGrid { grid-template-columns: 1fr; padding: 0 2rem 4rem; }
+  
+  /* Mobile Table Labels */
+  .logTable thead { display: none; }
+  .logTable tr { 
+    display: block; 
+    margin-bottom: 1rem; 
+    border: 1px solid rgba(0,0,0,0.1);
+    background: rgba(255,255,255,0.6);
+  }
+  .logTable td { 
+    display: flex; 
+    justify-content: space-between; 
+    padding: 0.8rem;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    text-align: right;
+  }
+  .logTable td::before {
+    content: attr(data-label);
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    color: #333;
+    text-align: left;
+    margin-right: 1rem;
+  }
+}

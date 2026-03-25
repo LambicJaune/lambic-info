@@ -1,16 +1,19 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { use } from "react";
 import { EventsMockData } from "../../EventsMockData";
 import styles from "../../EventsPage.module.css";
 import GenericBanner from "@/app/components/GenericBanner/GenericBanner";
 import Footer from "@/app/components/GenericFooter/GenericFooter";
 
-export default async function EventDetailPage({ params }: { params: Promise<{ country: string, event: string }> }) {
-    const { country, event } = await params;
+export default function EventDetailPage({ params }: { params: Promise<{ country: string, event: string }> }) {
+    const { country, event } = use(params);
     const countryKey = country.toLowerCase();
     const eventKey = event.toLowerCase();
-    
+
     const countryData = EventsMockData[countryKey];
     const eventData = countryData?.events[eventKey];
 
@@ -25,7 +28,7 @@ export default async function EventDetailPage({ params }: { params: Promise<{ co
     return (
         <>
             <GenericBanner backLink={`/lambic-events/${countryKey}`} />
-            
+
             <main className={styles.pageContainer}>
                 <section className={styles.eventTitleBanner}>
                     <h1 className={styles.noTransform}>{eventData.name}</h1>
@@ -33,7 +36,7 @@ export default async function EventDetailPage({ params }: { params: Promise<{ co
 
                 <div className={styles.eventContent}>
                     <div className={styles.eventContentWrapper}>
-                        
+
                         {/* HORIZONTAL INFO BAR */}
                         <div className={styles.eventInfoBar}>
                             <div className={styles.eventMetaItem}>
@@ -59,8 +62,8 @@ export default async function EventDetailPage({ params }: { params: Promise<{ co
                             {eventData.website && (
                                 <div className={styles.eventMetaItem}>
                                     <span className={styles.metaLabel}>Official Link</span>
-                                    <a href={eventData.website} target="_blank" rel="noopener noreferrer" 
-                                       style={{ color: '#000', fontWeight: 'bold', textDecoration: 'underline', fontSize: '1.1rem' }}>
+                                    <a href={eventData.website} target="_blank" rel="noopener noreferrer"
+                                        style={{ color: '#000', fontWeight: 'bold', textDecoration: 'underline', fontSize: '1.1rem' }}>
                                         Website →
                                     </a>
                                 </div>
@@ -70,7 +73,14 @@ export default async function EventDetailPage({ params }: { params: Promise<{ co
                         {/* OVERVIEW SECTION */}
                         <section className={styles.eventSection}>
                             <div className={styles.floatingImageWrapper}>
-                                <Image src={eventData.image} alt={eventData.name} width={480} height={600} className={styles.eventLabelImage} priority />
+                                <Image
+                                    src={eventData.image}
+                                    alt={eventData.name}
+                                    width={480}
+                                    height={600}
+                                    className={styles.eventLabelImage}
+                                    priority
+                                />
                             </div>
                             <h2>Overview</h2>
                             <p>{eventData.overview}</p>
@@ -84,43 +94,39 @@ export default async function EventDetailPage({ params }: { params: Promise<{ co
                             </section>
                         )}
 
-                        {/* EVENT ARCHIVE ACCORDION (Matches Bottle Log Style) */}
+                        {/* EVENT ARCHIVE ACCORDION */}
                         {eventData.zwanzeHistory && (
-                            <section className={styles.eventSection} style={{ marginTop: "5rem" }}>
+                            <section className={styles.accordionSection}>
                                 <details className={styles.accordionDetails}>
-                                    <summary style={{ cursor: "pointer", listStyle: "none" }}>
-                                        <h2 className={styles.centeredTitle} style={{ display: "flex", justifyContent: "center", alignItems: "center", borderBottom: "none" }}>
-                                            Event Archives
-                                        </h2>
+                                    <summary>
+                                        <h2 className={styles.centeredTitle}>Event Archives</h2>
                                     </summary>
-                                    <div style={{ overflowX: "auto", marginTop: "2rem" }}>
-                                        <table className={styles.logTable}>
-                                            <thead>
-                                                <tr>
-                                                    <th>Year</th>
-                                                    <th>Theme / Selection</th>
-                                                    <th>Details</th>
+                                    <table className={styles.logTable}>
+                                        <thead>
+                                            <tr>
+                                                <th>Year</th>
+                                                <th>Theme / Selection</th>
+                                                <th>Details</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {eventData.zwanzeHistory.map((row, i) => (
+                                                <tr key={i}>
+                                                    <td data-label="Year" style={{ fontWeight: 'bold' }}>{row.year}</td>
+                                                    <td data-label="Theme">{row.theme}</td>
+                                                    <td data-label="Details">{row.locations}</td>
                                                 </tr>
-                                            </thead>
-                                            <tbody>
-                                                {eventData.zwanzeHistory.map((row, i) => (
-                                                    <tr key={i}>
-                                                        <td style={{ fontWeight: 'bold' }}>{row.year}</td>
-                                                        <td>{row.theme}</td>
-                                                        <td>{row.locations}</td>
-                                                    </tr>
-                                                ))}
-                                            </tbody>
-                                        </table>
-                                    </div>
+                                            ))}
+                                        </tbody>
+                                    </table>
                                 </details>
                             </section>
                         )}
 
                         {/* BACK NAVIGATION */}
                         <div style={{ textAlign: "center", marginTop: "4rem", paddingBottom: "4rem" }}>
-                            <Link href={`/lambic-events/${countryKey}`} 
-                                  style={{ fontSize: "1.5rem", fontWeight: "500", color: '#000000', fontFamily: 'Josefin Sans' }}>
+                            <Link href={`/lambic-events/${countryKey}`}
+                                style={{ fontSize: "1.5rem", fontWeight: "500", color: '#000000', fontFamily: 'Josefin Sans' }}>
                                 ← Return to {countryData.countryName} Events
                             </Link>
                         </div>
