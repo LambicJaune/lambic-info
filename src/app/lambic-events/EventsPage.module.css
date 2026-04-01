@@ -9,13 +9,13 @@
 }
 
 /* ================= TITLE BANNER ================= */
-.eventTitleBanner {
+.pageTitleBanner {
   width: 100%;
   text-align: center;
   padding: 2rem 0;
 }
 
-.eventTitleBanner h1 {
+.pageTitleBanner h1 {
   display: inline-block;
   background-image: url("/images/shared/black_paint_stroke.png");
   background-repeat: no-repeat;
@@ -54,7 +54,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 3rem;
-  padding: 6rem;
+  padding: 4rem 8rem;
 }
 
 .countryCard {

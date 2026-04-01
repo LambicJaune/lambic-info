@@ -5,6 +5,7 @@ import WhatIsLambic from "./landing/WhatIsLambic";
 import Categories from "./landing/Categories";
 import Footer from "./components/GenericFooter/GenericFooter";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
     const [isClient, setIsClient] = useState(false);
@@ -75,7 +76,7 @@ export default function Home() {
 
             <div className="categories-wrapper">
                 <div className="what-is-lambic-button-wrapper">
-                    <button>WHAT IS LAMBIC ?</button>
+                    <Link href="/info/what-is-lambic">WHAT IS LAMBIC ?</Link>
                 </div>
                 <Categories />
                 <Footer />

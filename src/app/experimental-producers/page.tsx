@@ -13,7 +13,12 @@ export default function ExperimentalProducersOverview() {
     return (
         <>
             <GenericBanner backLink="/" />
-            <main className={styles.main}>
+            <main className={styles.pageContainer}>
+                <section>
+                    <div className={styles.pageTitleBanner}>
+                        <h1>Experimental Producers</h1>
+                    </div>
+                </section>
                 <section className={styles.categoriesGrid}>
                     {/* We use Object.entries to get the key (biir, h-ertie, etc.) 
                       as the 'slug' for the URL, and the value as 'producer' 

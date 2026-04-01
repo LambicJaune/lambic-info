@@ -1,0 +1,235 @@
+/* --- 1. Global Page Layout --- */
+.mainWrapper {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 5rem 10% 1rem; 
+  scroll-behavior: smooth;
+  background-image: url("/images/brewers-and-blenders/overview_bg.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+}
+
+.pageTitle {
+  display: block;
+  width: fit-content;
+  margin: -2rem auto 2rem;
+  background-image: url("/images/shared/black_paint_stroke.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 100% 220%;
+  color: #f1ca54;
+  font-family: "RivannaNF", serif;
+  font-weight: 500;
+  font-size: clamp(2.7rem, 5vw, 3.1rem);
+  padding: 2rem 6rem;
+  text-shadow: 2px 3px 0 rgba(0,0,0,0.8), 3px 4px 2px rgba(241,202,84,0.8);
+  line-height: 1.2;
+  text-align: center;
+}
+
+.sectionBlock {
+  max-width: 1700px;
+  margin: 0 auto 5rem auto;
+}
+
+/* --- 2. Split Layout (Text + Image) --- */
+.splitGrid {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  align-items: center;
+}
+
+.reverse {
+  flex-direction: row-reverse;
+}
+
+.textColumn {
+  flex: 6;
+}
+ 
+.imageColumn {
+  flex: 4;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+}
+
+.imageColumn img {
+  width: 80%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 5px 8px 15px rgba(0,0,0,0.8);
+  display:block;
+  margin: 0 auto;
+}
+
+/* --- 3. Typography & Markdown Styling --- */
+.textColumn h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.textColumn h3 {
+  font-size: 1.6rem;
+  margin: 1.5rem 0 0.5rem 0;
+  font-weight: 700;
+}
+
+.paragraph, 
+.textColumn p {
+  margin-bottom: 1.2rem;
+  line-height: 1.6;
+  white-space: pre-line; /* Respects your .join("\n\n") */
+}
+
+.inlineLink {
+  color: #5d8b5a;
+  text-decoration: underline;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.inlineLink:hover {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* --- 4. Glossary Navigation --- */
+.alphabetNav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 4rem;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.07); 
+  backdrop-filter: blur(4px);
+  border-radius: 8px;
+  position: sticky;
+  top: 20px; 
+  z-index: 10;
+  border: 2px solid #000000;
+}
+
+.navLink {
+  text-decoration: none;
+  color: #000000;
+  font-size: 1.5rem;
+  text-shadow: 2px 1px 2px rgba(0,0,0,0.4);
+  font-weight: bold;
+  padding: 5px 10px;
+  border: 1px solid transparent;
+  transition: all 0.2s;
+}
+
+.navLink:hover {
+  border-color: #93b591;
+  border-radius: 4px;
+  background: white;
+}
+
+/* --- 5. Glossary / Accordion Elements --- */
+.letterAccordion {
+  border-bottom: 1px solid #eaeaea;
+  padding: 1rem 0;
+  scroll-margin-top: 140px; /* Offset for sticky nav when jumping */
+}
+
+.letterHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.8rem;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 10px 0;
+  color: #000000;
+}
+
+/* Support for custom open/close markers if desired */
+.letterHeader::-webkit-details-marker {
+  display: none;
+}
+
+.plusIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 33px; 
+  height: 33px;
+  border: 2px solid #000000;
+  border-radius: 50%;
+  background-color: #3333331e;
+  font-size: 2.3rem;
+  font-weight: 500;
+  transition: transform 0.3s ease;
+  line-height: 0;
+  padding: 3px;
+}
+
+details[open] .plusIcon {
+  transform: rotate(45deg);
+}
+
+.entryList {
+  list-style-type: disc;
+  margin-left: 20px; /* Indent the bullets */
+  padding: 1rem 0;
+}
+
+.entryItem {
+  margin-bottom: 0.75rem;
+  line-height: 1.5;
+  color: #85a483;
+}
+
+.word {
+  color: #000000;
+  font-weight: 800;
+}
+
+.definition {
+  color: #3e3e3e;
+}
+
+/* --- 6. RESPONSIVE OVERRIDES --- */
+
+@media (max-width: 1024px) {
+  .mainWrapper {
+    padding: 4rem 3rem; /* Reduce huge side padding on tablets/small laptops */
+  }
+}
+
+@media (max-width: 768px) {
+  .mainWrapper {
+    padding: 2rem 2rem; /* Minimum padding for mobile */
+  }
+
+  .pageTitle {
+    font-size: 2.4rem;
+    padding: 2.5rem 4rem;
+    margin-top: 0.3rem;
+  }
+
+  .splitGrid, 
+  .splitGrid.reverse {
+    flex-direction: column; /* STACKING: Forces vertical layout */
+    gap: 20px;
+  }
+
+  .textColumn, 
+  .imageColumn {
+    flex: none; /* Disables the 7:3 ratio */
+    width: 100%; /* Full width for both */
+  }
+
+  .imageColumn {
+    order: -1; /* Always puts the image ABOVE text on mobile */
+  }
+
+  .alphabetNav {
+    top: 10px; /* Adjust sticky position for mobile headers */
+    justify-content: center;
+  }
+}

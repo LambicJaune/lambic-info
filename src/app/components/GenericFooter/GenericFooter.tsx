@@ -11,10 +11,10 @@ const Footer: React.FC = () => {
         <div className={styles["footer-links"]}>
           <p className={styles["footer-title"]}>LEARN MORE:</p>
           <ul>
-            <li><Link href="/team">The Team</Link></li>
-            <li><Link href="/books">Books</Link></li>
-            <li><Link href="/bibliography">Bibliography</Link></li>
-            <li><Link href="/glossary">Glossary</Link></li>
+            <li><Link href="/info/the-team">The Team</Link></li>
+            <li><Link href="/info/books">Books</Link></li>
+            <li><Link href="/info/bibliography">Bibliography</Link></li>
+            <li><Link href="/info/glossary">Glossary</Link></li>
             <li><Link href="/horal">HORAL</Link></li>
             <li><Link href="/lambic-groups">Lambic Groups</Link></li>
             <li><Link href="/museums">Museums</Link></li>

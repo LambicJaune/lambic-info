@@ -19,7 +19,10 @@ export default function BrewersOverview() {
     return (
         <>
             <GenericBanner backLink="/" />
-            <main className={styles.main}>
+            <main className={styles.pageContainer}>
+                <section className={styles.pageTitleBanner}>
+                    <h1>Brewers and Blenders</h1>
+                </section>
                 <section className={styles.categoriesGrid}>
                     {brewers.map((brewery) => {
                         // Special link for Cantillon to go to the dynamic producer page

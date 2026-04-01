@@ -10,7 +10,7 @@ export default function LambicEventsCountriesPage() {
         <>
             <GenericBanner backLink="/" />
             <main className={styles.pageContainer}>
-                <section className={styles.eventTitleBanner}>
+                <section className={styles.pageTitleBanner}>
                     <h1>Lambic Events</h1>
                 </section>
                 <div className={styles.eventsGrid}>

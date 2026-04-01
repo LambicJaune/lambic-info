@@ -1,5 +1,33 @@
-.main {
-  margin: -2rem 0rem;
+.pageContainer {
+  width: 100%;
+  min-height: 100vh;
+  background-image: url("/images/brewers-and-blenders/overview_bg.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.pageTitleBanner {
+  width: 100%;
+  text-align: center;
+  padding: 2rem 0 0;
+}
+
+.pageTitleBanner h1 {
+  display: inline-block;
+  background-image: url("/images/shared/black_paint_stroke.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 100% 220%;
+  color: #f1ca54;
+  font-family: "RivannaNF", serif;
+  font-weight: 500;
+  font-size: clamp(2.5rem, 5vw, 3.1rem);
+  padding: 2rem 6rem;
+  text-shadow: 2px 3px 0 rgba(0,0,0,0.8), 3px 4px 2px rgba(241,202,84,0.8);
+  line-height: 1.2;
+  margin: 0;
 }
 
 /* ===================== CATEGORIES GRID =================== */
@@ -9,7 +37,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 3rem;
-  padding: 8rem;
+  padding: 4rem 8rem;
   background-image: url("/images/brewers-and-blenders/overview_bg.jpg");
 
 }
