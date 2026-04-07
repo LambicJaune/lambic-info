@@ -22,7 +22,7 @@ export default async function CountryEventsPage({ params }: { params: Promise<{ 
         <>
             <GenericBanner backLink="/lambic-events" />
             <main className={styles.pageContainer}>
-                <section className={styles.eventTitleBanner}>
+                <section className={styles.pageTitleBanner}>
                     <h1 className={styles.noTransform}>{countryData.countryName} Events</h1>
                 </section>
                 <div className={styles.eventsGrid}>

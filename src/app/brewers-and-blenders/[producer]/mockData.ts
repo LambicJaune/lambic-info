@@ -90,8 +90,8 @@ export const producersMockData: Record<string, ProducerData> = {
                     { id: 2, name: "Zwanze 2009", img: "/images/breweries/cantillon/zwanze-2.jpg" },
                     { id: 3, name: "Zwanze 2010", img: "/images/breweries/cantillon/zwanze-3.jpg" },
                     { id: 4, name: "Zwanze 2011", img: "/images/breweries/cantillon/zwanze-4.jpg" },
-                    { id: 5, name: "Zwanze 2012", img: "/images/breweries/cantillon/zwanze-5.jpg" },
-                    { id: 6, name: "Zwanze 2013", img: "/images/breweries/cantillon/zwanze-6.jpg" },
+                    { id: 5, name: "Zwanze 2012", img: "/images/brewers-and-blenders/cantillon/Zwanze_2012.jpg" },
+                    { id: 6, name: "Zwanze 2013", img: "/images/brewers-and-blenders/cantillon/Zwanze_2013.jpeg" },
                 ],
             },
         ],
@@ -103,7 +103,8 @@ export const producersMockData: Record<string, ProducerData> = {
             { name: "Special barrels", slug: "special-barrels", image: "/images/brewers-and-blenders/special_barrels_box.jpg" },
             { name: "Young Lambic", slug: "young-lambic", image: "/images/brewers-and-blenders/young_lambic_box.jpg" },
             { name: "Old Lambic", slug: "old-lambic", image: "/images/brewers-and-blenders/old_lambic_box.jpg" },
-            { name: "Others", slug: "others", image: "/images/brewers-and-blenders/other_lambics_box.jpg" },
+            { name: "Other Lambics", slug: "others", image: "/images/brewers-and-blenders/other_lambics_box.jpg" },
+            { name: "Lambic Hybrids", slug: "others", image: "/images/brewers-and-blenders/lambic_hybrid_box.png" },
         ],
         categoryDescriptions: {
             "grape-lambic": "Cantillon has, over time, done more lambic and grape experiments than any single fruit. This list has been broken out of the fruited lambic category and given its own section to reflect this. This category does not include blends of lambic aged in specific wine barrels which do not contain fruit."

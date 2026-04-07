@@ -30,7 +30,7 @@ export default function EventDetailPage({ params }: { params: Promise<{ country:
             <GenericBanner backLink={`/lambic-events/${countryKey}`} />
 
             <main className={styles.pageContainer}>
-                <section className={styles.eventTitleBanner}>
+                <section className={styles.pageTitleBanner}>
                     <h1 className={styles.noTransform}>{eventData.name}</h1>
                 </section>
 
@@ -122,14 +122,6 @@ export default function EventDetailPage({ params }: { params: Promise<{ country:
                                 </details>
                             </section>
                         )}
-
-                        {/* BACK NAVIGATION */}
-                        <div style={{ textAlign: "center", marginTop: "4rem", paddingBottom: "4rem" }}>
-                            <Link href={`/lambic-events/${countryKey}`}
-                                style={{ fontSize: "1.5rem", fontWeight: "500", color: '#000000', fontFamily: 'Josefin Sans' }}>
-                                ← Return to {countryData.countryName} Events
-                            </Link>
-                        </div>
                     </div>
                 </div>
             </main>

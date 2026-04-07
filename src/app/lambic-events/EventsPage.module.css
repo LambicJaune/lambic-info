@@ -53,8 +53,8 @@
 .eventsGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 3rem;
-  padding: 4rem 8rem;
+  gap: 5rem;
+  padding: 2rem 6rem 6rem;
 }
 
 .countryCard {

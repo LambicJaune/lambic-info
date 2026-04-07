@@ -36,12 +36,12 @@
 /* ===================== PLACES GRID (LIST PAGES) =================== */
 .descriptionWrapper {
   max-width: 800px;
-  margin: 0 auto -4rem auto;
+  margin: 0 auto -1rem auto;
   text-align: center;
   color: rgb(0, 0, 0);
   padding: 0 1rem;
   position: relative;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   z-index: 10;
 }
 
@@ -49,20 +49,22 @@
   position: relative;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 3rem;
-  padding: 4rem 8rem;
+  gap: 5rem;
+  padding: 4rem 6rem 6rem;
 }
 
 @media (max-width: 1100px) {
   .placesGrid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 4rem;
+    padding: 4rem 4rem;
   }
 }
 
 @media (max-width: 768px) {
   .placesGrid {
     grid-template-columns: 1fr;
-    padding: 6rem 3rem;
+    padding: 5rem 2rem;
   }
 }
 
