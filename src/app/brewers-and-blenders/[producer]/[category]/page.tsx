@@ -65,12 +65,6 @@ export default async function BeerListPage({ params }: { params: Promise<{ produ
                                 </div>
                             ))}
                         </div>
-
-                        <div style={{ textAlign: "center", marginTop: "5rem", paddingBottom: "4rem" }}>
-                            <Link href={`/brewers-and-blenders/${producer}`} className={styles.centeredTitle} style={{ fontSize: "1.5rem", }}>
-                                ← Back to {producerData.name} Overview
-                            </Link>
-                        </div>
                     </div>
                 </div>
             </main>

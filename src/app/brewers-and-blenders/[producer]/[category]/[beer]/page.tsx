@@ -102,20 +102,13 @@ export default async function BeerDetailPage({ params }: { params: Promise<{ pro
 
                         {/* References Section */}
                         {beerData.references && (
-                            <section style={{ marginTop: "4rem", paddingTop: "2rem" }}>
+                            <section style={{ margin: "3rem 0", paddingTop: "2rem" }}>
                                 <h3 style={{ color: "#000", marginBottom: "1rem" }}>References:</h3>
                                 <ul style={{ color: "#555", fontSize: "1.2rem" }}>
                                     {beerData.references.map((ref, i) => <li key={i}>{ref}</li>)}
                                 </ul>
                             </section>
                         )}
-
-                        {/* Back Navigation */}
-                        <div style={{ textAlign: "center", marginTop: "5rem", paddingBottom: "4rem" }}>
-                            <Link href={`/brewers-and-blenders/${producer}/${category}`} className={styles.centeredTitle} style={{ fontSize: "1.5rem" }}>
-                                ← Back to the {category.replace(/-/g, ' ') } list
-                            </Link>
-                        </div>
                     </div>
                 </div>
             </main>
