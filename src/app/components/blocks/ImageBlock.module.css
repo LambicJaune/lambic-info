@@ -1,0 +1,129 @@
+.figure {
+    width: min(100%, 20rem);
+    max-width: 100%;
+    margin-block: 0.5rem 1.25rem;
+    padding: 0.5rem;
+    border: 1px solid rgb(0 0 0 / 14%);
+    background: rgb(255 255 255 / 28%);
+    box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
+    box-sizing: border-box;
+}
+
+.figure img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.imageButton {
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: inherit;
+}
+
+.imageButton:disabled {
+    cursor: default;
+}
+
+.zoomable {
+    cursor: zoom-in;
+}
+
+.figure figcaption {
+    margin-top: 0.5rem;
+    padding-inline: 0.15rem;
+    font-size: 0.9em;
+    line-height: 1.35;
+    color: rgb(0 0 0 / 88%);
+}
+
+.left {
+    float: left;
+    margin-right: 1.5rem;
+}
+
+.right {
+    float: right;
+    margin-left: 1.5rem;
+}
+
+.center {
+    margin-inline: auto;
+}
+
+.none {
+    margin-inline: 0;
+}
+
+.lightbox {
+    position: fixed;
+    z-index: 1000;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    width: 100vw;
+    height: 100vh;
+    padding: 3rem;
+    background: rgb(0 0 0 / 85%);
+}
+
+.enlargedFigure {
+    width: auto;
+    max-width: min(90vw, 90rem);
+    max-height: 90vh;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+    color: white;
+}
+
+.figure .enlargedImage {
+    display: block;
+    width: auto;
+    max-width: 100%;
+    max-height: 80vh;
+    margin-inline: auto;
+    object-fit: contain;
+}
+
+.enlargedFigure figcaption {
+    margin-top: 0.75rem;
+    color: white;
+    text-align: center;
+}
+
+.closeButton {
+    position: fixed;
+    z-index: 1;
+    top: 1rem;
+    right: 1rem;
+    width: 2.75rem;
+    height: 2.75rem;
+    padding: 0;
+    border: 1px solid white;
+    border-radius: 50%;
+    background: rgb(0 0 0 / 65%);
+    color: white;
+    font-size: 2rem;
+    line-height: 1;
+    cursor: pointer;
+}
+
+@media (max-width: 700px) {
+    .figure,
+    .left,
+    .right {
+        float: none;
+        width: 100% !important;
+        margin-inline: 0;
+    }
+
+    .lightbox {
+        padding: 1rem;
+    }
+}
