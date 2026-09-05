@@ -125,7 +125,11 @@ function ProducerSections({ blocks }: { blocks: Block[] }) {
 
         if (isHeading && heading.anchor === 'beers') {
             return (
-                <section className={styles.beerSection} key={`beers-${index}`}>
+                <section
+                    className={styles.beerSection}
+                    data-link-icons="off"
+                    key={`beers-${index}`}
+                >
                     <BlockRenderer blocks={section} />
                 </section>
             );
@@ -136,6 +140,27 @@ function ProducerSections({ blocks }: { blocks: Block[] }) {
                 <section
                     className={styles.referencesSection}
                     key={`references-${index}`}
+                >
+                    <BlockRenderer blocks={section} />
+                </section>
+            );
+        }
+
+        const isSpecialBeerSeries =
+            isHeading &&
+            (heading.anchor === 'cantillon-zwanze-day' ||
+                section.some(
+                    (block) =>
+                        block.type === 'heading' &&
+                        /(?:^|-)series(?:$|-)/i.test(block.anchor)
+                ));
+
+        if (isSpecialBeerSeries) {
+            return (
+                <section
+                    className={styles.specialBeerSeriesSection}
+                    data-link-icons="off"
+                    key={`series-${index}`}
                 >
                     <BlockRenderer blocks={section} />
                 </section>

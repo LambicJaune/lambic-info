@@ -133,7 +133,17 @@
 
 .fullContent :global(#zwanze-series) {
     text-align: center;
+    margin-top: 2rem;
     margin-bottom: 2rem;
+}
+
+.specialBeerSeriesSection > h2 {
+    text-align: center;
+}
+
+.specialBeerSeriesSection > p {
+    line-height: 1.65;
+    margin-block: 1rem 1.35rem;
 }
 
 .overviewTitle {

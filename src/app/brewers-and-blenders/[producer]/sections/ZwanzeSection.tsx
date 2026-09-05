@@ -17,7 +17,7 @@ interface Props {
 
 export default function ZwanzeSection({ title, description, subTitle, beers }: Props) {
     return (
-        <section className={styles.section}>
+        <section className={styles.section} data-link-icons="off">
             <h2 className={styles.centeredTitle}>{title}</h2>
             {description && (
                 <div className={styles.sectionDescription}>
