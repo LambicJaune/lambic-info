@@ -46,6 +46,7 @@ export default function ImageBlock({
     return (
         <figure
             className={`${styles.figure} ${styles[align ?? 'none']}`}
+            data-image-align={align ?? 'none'}
             style={{ width: width ?? undefined }}
         >
             {/* Native images support nullable migrated dimensions and resolved

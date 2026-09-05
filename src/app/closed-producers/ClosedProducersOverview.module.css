@@ -93,22 +93,41 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  box-sizing: border-box;
+  padding: clamp(1rem, 4vw, 2.5rem);
   z-index: 2;
 }
 
 .categoryOverlay h3 {
+  width: 100%;
+  margin: 0;
   color: #f1ca54;
   font-family: "RivannaNF", serif;
   font-size: 2.3rem;
   font-weight: 500;
+  line-height: 1.08;
+  overflow-wrap: anywhere;
+  text-align: center;
   text-shadow: 2px 2px 0 rgba(0,0,0,0.8), 4px 4px 12px rgba(0,0,0,0.8);
+}
+
+.cardName,
+.cardLocation {
+  display: block;
+}
+
+.cardLocation {
+  margin-top: 0.35em;
+  font-size: 0.8em;
+  line-height: 1.12;
 }
 
 /* ================= DIRECTORY ACCORDION ================= */
 .directorySection {
-  max-width: 1200px;
+  width: min(75%, 1600px);
+  max-width: 1600px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0;
 }
 
 .accordionDetails {
@@ -171,6 +190,55 @@
   background: rgba(241, 202, 84, 0.2);
 }
 
+.descriptionSection figure figcaption {
+  text-align: center;
+}
+
+.logTable th:nth-child(1) { width: 18%; }
+.logTable th:nth-child(2) { width: 14%; }
+.logTable th:nth-child(3) { width: 16%; }
+.logTable th:nth-child(4) { width: 12%; }
+.logTable th:nth-child(5) { width: 40%; }
+
+.directoryGallery :global([data-block="gallery"]) {
+  grid-template-columns: repeat(auto-fit, minmax(6rem, 9rem));
+  justify-content: center;
+  margin: 1rem 0 0;
+  gap: 0.75rem;
+}
+
+.directoryGallery {
+  width: 100%;
+  text-align: center;
+}
+
+.directoryGallery :global([data-gallery-item]) figcaption {
+  font-size: 0.9rem;
+  line-height: 1.25;
+  text-align: center;
+}
+
+.trailingContent {
+  width: min(75%, 1600px);
+  margin: 3rem auto 0;
+}
+
+.trailingContent > h2 {
+  margin: 0 0 1.33rem;
+  color: rgba(20, 20, 20, 0.72);
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.trailingContent > p,
+.trailingContent > ol,
+.trailingContent > ul,
+.trailingContent > dl {
+  font-size: 1.15rem;
+  line-height: 1.5;
+}
+
 /* ================= RESPONSIVE ================= */
 @media (max-width: 1100px) {
   .categoriesGrid { grid-template-columns: repeat(2, 1fr); padding: 0 4rem 4rem; }
@@ -178,6 +246,11 @@
 
 @media (max-width: 768px) {
   .categoriesGrid { grid-template-columns: 1fr; padding: 0 2rem 4rem; }
+
+  .directorySection,
+  .trailingContent {
+    width: calc(100% - 2rem);
+  }
   
   /* Mobile Table Labels */
   .logTable thead { display: none; }

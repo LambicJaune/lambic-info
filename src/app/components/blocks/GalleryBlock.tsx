@@ -11,7 +11,20 @@ export default function GalleryBlock({
     widths,
 }: GalleryBlockType) {
     const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+    const [failedIndexes, setFailedIndexes] = useState<Set<number>>(
+        () => new Set()
+    );
     const selectedItem = selectedIndex === null ? null : items[selectedIndex];
+
+    function markImageAsFailed(index: number) {
+        setFailedIndexes((current) => {
+            const next = new Set(current);
+            next.add(index);
+            return next;
+        });
+
+        if (selectedIndex === index) setSelectedIndex(null);
+    }
 
     useEffect(() => {
         function closeOnEscape(event: KeyboardEvent) {
@@ -28,10 +41,11 @@ export default function GalleryBlock({
     // the same responsive thumbnail grid and retain their optional dimensions.
     return (
         <>
-            <div className={styles.gallery}>
-                {items.map((item, index) => (
+            <div className={styles.gallery} data-block="gallery">
+                {items.map((item, index) => failedIndexes.has(index) ? null : (
                     <figure
                         className={styles.item}
+                        data-gallery-item
                         key={`${item.url}-${index}`}
                     >
                         <button
@@ -47,6 +61,7 @@ export default function GalleryBlock({
                                 width={widths ?? undefined}
                                 height={heights ?? undefined}
                                 loading="lazy"
+                                onError={() => markImageAsFailed(index)}
                             />
                         </button>
 
@@ -84,6 +99,7 @@ export default function GalleryBlock({
                             className={styles.enlargedImage}
                             src={selectedItem.url}
                             alt={selectedItem.alt ?? ''}
+                            onError={() => markImageAsFailed(selectedIndex!)}
                         />
                         {selectedItem.caption && (
                             <figcaption>
