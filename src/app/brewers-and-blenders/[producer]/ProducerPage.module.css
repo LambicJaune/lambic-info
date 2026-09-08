@@ -82,6 +82,7 @@
 
 .beerSection > h3,
 .beerSection > h4 {
+    clear: none;
     margin-top: 2.5rem;
     margin-bottom: 1rem;
     font-size: 1.75rem;
@@ -101,9 +102,35 @@
     margin-bottom: 0.45rem;
 }
 
+.longFormBeerSection > ul,
+.longFormBeerSection > ol {
+    columns: auto;
+    width: 100%;
+    margin-bottom: 0.8rem;
+}
+
+.longFormBeerSection > h2 {
+    margin-bottom: 2rem;
+}
+
+.longFormBeerSection > ul > li,
+.longFormBeerSection > ol > li {
+    line-height: 1.65;
+}
+
 .beerSection > p {
     margin-block: 1.5rem 2rem;
     line-height: 1.65;
+}
+
+.beerSection [data-content-link] {
+    transition: color 160ms ease, text-shadow 160ms ease;
+}
+
+.beerSection [data-content-link]:hover,
+.beerSection [data-content-link]:focus-visible {
+    color: #17130a;
+    text-shadow: 0 0 7px rgba(241, 202, 84, 1);
 }
 
 .videoSection .accordionContent {
@@ -166,9 +193,7 @@
 
 /* ================= LOGO ================= */
 .logoContainer {
-    position: relative;
     width: 100%;
-    aspect-ratio: 1 / 1;
     max-width: 350px;
     margin-bottom: 1.25rem;
     margin-left: auto;
@@ -176,9 +201,13 @@
 }
 
 .logoImage {
-    width: 100%;
-    height: 100%;
+    display: block;
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    max-height: 260px;
     object-fit: contain;
+    margin-inline: auto;
     filter: drop-shadow(0 4px 6px rgb(0 0 0 / 35%));
 }
 
@@ -660,6 +689,10 @@
 .logTable tr:hover {
     background: rgba(241, 202, 84, 0.1);
 }
+
+.logTable tbody tr:nth-child(even) { background: rgba(255, 255, 255, 0.28); }
+.logTable tbody tr:nth-child(odd) { background: rgba(0, 0, 0, 0.035); }
+.logTable tbody tr:hover { background: rgba(241, 202, 84, 0.1); }
 
 /* Accordion Marker Fix */
 .accordionDetails {

@@ -95,7 +95,13 @@
 }
 
 .categoryOverlay h3 {
+  display: flex;
+  max-width: 90%;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.18rem;
   font-weight: 500;
+  line-height: 1.08;
   text-shadow:
     2px 2px 0 rgba(0,0,0,0.8),
     4px 4px 12px rgba(0,0,0,0.8);
@@ -129,4 +135,8 @@
   );
 
   z-index: -1;
+}
+
+.cardQualifier {
+  white-space: nowrap;
 }

@@ -46,9 +46,15 @@ export default async function ProducerPage({
     }
 
     const displayTitle = page.displayTitle ?? page.title.replaceAll('_', ' ');
-    const { overviewBlocks, remainingBlocks } = splitProducerBlocks(
-        page.blocks
-    );
+    const imageOrderedBlocks = page.slug === 'den-herberg'
+        ? moveDenHerbergHistoryImages(page.blocks)
+        : page.slug === 'hanssens-artisanaal-bvba'
+            ? moveHanssensHistoryImages(page.blocks)
+            : page.slug === 'het-boerenerf'
+                ? moveHetBoerenerfHistoryImages(page.blocks)
+            : page.blocks;
+    const repairedBlocks = repairMalformedUrlReferences(imageOrderedBlocks);
+    const { overviewBlocks, remainingBlocks } = splitProducerBlocks(repairedBlocks);
     const overviewHeading =
         overviewBlocks[0]?.type === 'heading' ? overviewBlocks[0] : null;
     const overviewContent = overviewHeading
@@ -100,7 +106,7 @@ export default async function ProducerPage({
 
                         {remainingBlocks.length > 0 && (
                             <article className={styles.fullContent}>
-                                <ProducerSections blocks={remainingBlocks} />
+                                <ProducerSections blocks={remainingBlocks} pageSlug={page.slug} />
                             </article>
                         )}
                     </div>
@@ -111,8 +117,143 @@ export default async function ProducerPage({
     );
 }
 
-function ProducerSections({ blocks }: { blocks: Block[] }) {
+function moveDenHerbergHistoryImages(blocks: Block[]): Block[] {
+    const historyIndex = blocks.findIndex(block => block.type === 'heading' && block.anchor === 'history');
+    const imageIndex = historyIndex - 1;
+    if (historyIndex < 1 || blocks[imageIndex]?.type !== 'image' || blocks[imageIndex].align !== 'left') return blocks;
+    const reordered = [...blocks];
+    const [image] = reordered.splice(imageIndex, 1);
+    reordered.splice(historyIndex, 0, image);
+    const reorderedHistoryIndex = reordered.findIndex(block => block.type === 'heading' && block.anchor === 'history');
+    const nextSectionIndex = reordered.findIndex((block, index) => index > reorderedHistoryIndex && block.type === 'heading' && block.level === 2);
+    const buildingImageIndex = reordered.findIndex((block, index) => index > reorderedHistoryIndex && (nextSectionIndex === -1 || index < nextSectionIndex) && block.type === 'image' && /Den_Herberg_-_building_Buizingen\.jpg/i.test(block.url));
+    const firstHistoryParagraphIndex = reordered.findIndex((block, index) => index > reorderedHistoryIndex && block.type === 'paragraph');
+    if (buildingImageIndex !== -1 && firstHistoryParagraphIndex !== -1 && buildingImageIndex > firstHistoryParagraphIndex) {
+        const [buildingImage] = reordered.splice(buildingImageIndex, 1);
+        reordered.splice(firstHistoryParagraphIndex + 1, 0, buildingImage);
+    }
+    return reordered;
+}
+
+function moveHanssensHistoryImages(blocks: Block[]): Block[] {
+    const reordered = [...blocks];
+    let historyIndex = reordered.findIndex(block => block.type === 'heading' && block.anchor === 'history');
+    const corkIndex = reordered.findIndex(block => block.type === 'image' && /HanssensCorks-1\.jpg/i.test(block.url));
+    if (historyIndex === -1 || corkIndex === -1) return blocks;
+
+    const [corks] = reordered.splice(corkIndex, 1);
+    historyIndex = reordered.findIndex(block => block.type === 'heading' && block.anchor === 'history');
+    reordered.splice(historyIndex + 1, 0, corks);
+
+    const crateIndex = reordered.findIndex(block => block.type === 'image' && /HanssensArtisanaal-1\.jpg/i.test(block.url));
+    const firstParagraphIndex = reordered.findIndex((block, index) => index > historyIndex && block.type === 'paragraph');
+    if (crateIndex !== -1 && firstParagraphIndex !== -1) {
+        const [crate] = reordered.splice(crateIndex, 1);
+        const updatedFirstParagraphIndex = reordered.findIndex((block, index) => index > historyIndex && block.type === 'paragraph');
+        reordered.splice(updatedFirstParagraphIndex + 1, 0, crate);
+    }
+    return reordered;
+}
+
+function moveHetBoerenerfHistoryImages(blocks: Block[]): Block[] {
+    const reordered = [...blocks];
+
+    let historyIndex = reordered.findIndex(block => block.type === 'heading' && block.anchor === 'history');
+    const firstImageIndex = historyIndex - 1;
+    const firstImage = reordered[firstImageIndex];
+    if (historyIndex > 0 && firstImage?.type === 'image' && /Boerenerf_Eylenbosch\.JPG/i.test(firstImage.url)) {
+        const [historyImage] = reordered.splice(firstImageIndex, 1);
+        historyIndex = reordered.findIndex(block => block.type === 'heading' && block.anchor === 'history');
+        reordered.splice(historyIndex + 1, 0, historyImage);
+    }
+
+    const courtyardIndex = reordered.findIndex(
+        block => block.type === 'image' && /Boerenerf courtyard/i.test(block.caption ?? ''),
+    );
+    const brewingIndex = reordered.findIndex(
+        block => block.type === 'heading' && block.anchor === 'brewing-and-blending-process',
+    );
+    if (courtyardIndex !== -1 && brewingIndex !== -1) {
+        const [courtyard] = reordered.splice(courtyardIndex, 1);
+        const updatedBrewingIndex = reordered.findIndex(
+            block => block.type === 'heading' && block.anchor === 'brewing-and-blending-process',
+        );
+        reordered.splice(updatedBrewingIndex + 1, 0, courtyard);
+    }
+    return reordered;
+}
+
+function repairMalformedUrlReferences(blocks: Block[]): Block[] {
+    const labels = new Map<string, string>();
+    const recovered: { number: number; url: string; label: string }[] = [];
+    let nextNumber = Math.max(0, ...blocks.flatMap(block => block.type === 'references' ? block.items.map(item => item.number) : [])) + 1;
+    const cleaned = blocks.map((block) => {
+        if (block.type !== 'paragraph') return block;
+        let paragraphContent = block.content;
+        const openingIndex = paragraphContent.findIndex(node => typeof node === 'string' && /<ref\b/i.test(node));
+        const closingIndex = paragraphContent.findIndex((node, index) => index > openingIndex && typeof node === 'string' && /<\/ref>/i.test(node));
+        if (openingIndex !== -1 && closingIndex !== -1) {
+            const link = paragraphContent.slice(openingIndex, closingIndex + 1).find(node => typeof node !== 'string' && node.type === 'link' && /^https?:\/\//i.test(node.href));
+            if (link && typeof link !== 'string' && link.type === 'link') {
+                const number = nextNumber++;
+                recovered.push({ number, url: link.href, label: inlineText(link.content) || link.href });
+                const openingText = paragraphContent[openingIndex];
+                const closingText = paragraphContent[closingIndex];
+                const before = typeof openingText === 'string' ? openingText.replace(/<ref\b.*$/i, '') : '';
+                const after = typeof closingText === 'string' ? closingText.replace(/^.*?<\/ref>/i, '') : '';
+                paragraphContent = [
+                    ...paragraphContent.slice(0, openingIndex),
+                    before,
+                    { type: 'footnoteMarker' as const, number, refName: null },
+                    after,
+                    ...paragraphContent.slice(closingIndex + 1),
+                ];
+            }
+        }
+        const content = paragraphContent.map((node, index, nodes) => {
+            if (typeof node !== 'string' || !/<\/ref>/i.test(node)) return node;
+            const marker = nodes[index - 1];
+            const match = node.match(/^\s*(.*?)\s*<\/ref>/i);
+            if (match && typeof marker !== 'string' && marker?.type === 'footnoteMarker' && marker.refName && /^https?:\/\//i.test(marker.refName)) {
+                labels.set(marker.refName, match[1].trim());
+                return node.replace(/^\s*.*?\s*<\/ref>/i, '');
+            }
+            return node.replace(/<\/?(?:ref|href)>/gi, '');
+        });
+        return { ...block, content };
+    });
+
+    return cleaned.map((block) => {
+        if (block.type !== 'references') return block;
+        const repairedItems = block.items.map((item) => {
+            if (item.content.length || !item.refName || !/^https?:\/\//i.test(item.refName)) return item;
+            const label = labels.get(item.refName) || item.refName;
+            return {
+                ...item,
+                content: [{
+                    type: 'link' as const,
+                    href: item.refName,
+                    linkType: 'external' as const,
+                    content: [label],
+                    targetTitle: null,
+                    targetFragment: null,
+                }],
+            };
+        });
+        return {
+            ...block,
+            items: [...repairedItems, ...recovered.map(reference => ({
+                number: reference.number,
+                refName: null,
+                content: [{ type: 'link' as const, href: reference.url, linkType: 'external' as const, content: [reference.label], targetTitle: null, targetFragment: null }],
+            }))],
+        };
+    });
+}
+
+function ProducerSections({ blocks, pageSlug }: { blocks: Block[]; pageSlug: string }) {
     const sections = groupTopLevelSections(blocks);
+    const usesLongFormBeerList = ['wofd-vergistingen', 'w-o-f-d-vergistingen'].includes(pageSlug);
 
     return sections.map((section, index) => {
         const heading = section[0];
@@ -126,7 +267,7 @@ function ProducerSections({ blocks }: { blocks: Block[] }) {
         if (isHeading && heading.anchor === 'beers') {
             return (
                 <section
-                    className={styles.beerSection}
+                    className={`${styles.beerSection} ${usesLongFormBeerList ? styles.longFormBeerSection : ''}`}
                     data-link-icons="off"
                     key={`beers-${index}`}
                 >
