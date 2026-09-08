@@ -56,6 +56,8 @@
 .sidebar {
   float: left;
   width: 300px;
+  flex: 0 0 300px;
+  align-self: flex-start;
   padding: 0rem;
   background: rgba(0,0,0,0.15);
   border-radius: 10px;
@@ -87,6 +89,46 @@
   margin-right: auto;
 }
 
+.infoBar {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 2rem;
+  padding: 1.5rem 2rem;
+  background: rgba(255, 255, 255, 0.35);
+  border: 2px solid #000;
+  border-radius: 8px;
+  margin-bottom: 2.5rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  backdrop-filter: blur(5px);
+}
+
+.infoBarCompact {
+  width: min(73.333%, 990px);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.infoBar .socialLinks {
+  flex-direction: row;
+  align-items: center;
+  border-top: 0;
+  padding-top: 0;
+}
+
+.metaItem { flex: 1; text-align: center; }
+.metaLabel { display: flex; justify-content: center; align-items: center; gap: .6rem; font-size: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: #444; margin-bottom: .6rem; }
+.metaValue { font-size: 1.35rem; font-weight: 600; color: #000; }
+.metaLogo img { display: block; width: auto; max-width: 180px; max-height: 110px; object-fit: contain; margin: 0 auto; }
+
+.logoContainer img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
 /* ================= BREWERY INFO ================= */
 .breweryInfo {
   list-style: none;
@@ -95,6 +137,10 @@
 }
 
 .breweryInfo li {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0.65rem;
   margin-bottom: 0.5rem;
   text-align: center;
   font-size: 1.3rem;
@@ -257,6 +303,9 @@
   .mainTop { flex-direction: column; }
   .sidebar { width: 100%; float: none; margin-right: 0; margin-bottom: 2rem; }
   .categoriesGrid { grid-template-columns: 1fr; padding: 2rem 1rem; }
+  .infoBarCompact { width: 100%; }
+  .infoBar { flex-direction: column; }
+  .infoBar .socialLinks { flex-direction: row; }
 }
 
 /* ================= BEER LIST & LOG TABLE ================= */
@@ -287,6 +336,10 @@
 .logTable tbody tr:hover {
   background: rgba(241, 202, 84, 0.2);
 }
+
+.logTable tbody tr:nth-child(even) { background: rgba(255, 255, 255, 0.28); }
+.logTable tbody tr:nth-child(odd) { background: rgba(0, 0, 0, 0.035); }
+.logTable tbody tr:hover { background: rgba(241, 202, 84, 0.2); }
 
 @media (max-width: 768px) {
   /* 1. Hide the table header entirely */
@@ -386,4 +439,89 @@
   align-items: center;
   justify-content: center;
   text-align: center;
+}
+
+.experimentalIntroduction {
+  flex: 1 1 0;
+  min-width: 250px;
+}
+
+.experimentalIntroduction > h2,
+.referencesSection > h2 {
+  text-align: center;
+}
+
+.experimentalIntroduction p,
+.accordionContent p {
+  font-size: 1.4rem;
+  line-height: 1.65;
+}
+
+.contentAccordion {
+  margin-block: 1.5rem;
+  clear: both;
+}
+
+.contentAccordion > summary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+  cursor: pointer;
+}
+
+.contentAccordion > summary::-webkit-details-marker {
+  display: none;
+}
+
+.contentAccordion > summary h2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  text-align: center;
+}
+
+.contentAccordion > summary h2::after {
+  display: inline-flex;
+  width: 2rem;
+  height: 2rem;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  border: 2px solid #000;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.15);
+  content: "+";
+  font: 700 1.3rem/1 Arial, sans-serif;
+  flex: 0 0 auto;
+}
+
+.contentAccordion[open] > summary h2::after {
+  content: "−";
+}
+
+.referencesSection {
+  margin-top: 2rem;
+}
+
+.referencesSection > h2 {
+  font-size: 1.6rem;
+  opacity: 0.82;
+}
+
+.referencesSection > ol,
+.referencesSection > ul,
+.referencesSection > p {
+  font-size: 1.2rem;
+  line-height: 1.5;
+}
+
+.legacyBackLink {
+  margin-top: 3rem;
+}
+
+.tableWrapper {
+  width: 100%;
+  overflow-x: auto;
 }

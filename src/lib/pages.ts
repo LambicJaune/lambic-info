@@ -73,6 +73,20 @@ export async function getPageBySlug(
     return data ? mapPageRow(data) : null;
 }
 
+export async function getPagesByType(pageType: PageType): Promise<Page[]> {
+    const { data, error } = await supabase
+        .from('pages')
+        .select(PAGE_SELECT)
+        .eq('page_type', pageType)
+        .order('title');
+
+    if (error) {
+        throw new Error(`Failed to load ${pageType} pages: ${error.message}`);
+    }
+
+    return (data as unknown as PageRow[] | null)?.map(mapPageRow) ?? [];
+}
+
 function mapPageRow(row: PageRow): Page {
     return {
         id: row.id,

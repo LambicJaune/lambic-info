@@ -32,6 +32,15 @@
 
 /* ===================== CATEGORIES GRID =================== */
 
+.introduction {
+  width: min(86%, 1200px);
+  margin: 1rem auto 0;
+  font-size: 1.35rem;
+  line-height: 1.65;
+}
+
+.introduction p { margin: 1rem 0 1.5rem; }
+
 .categoriesGrid {
   position: relative;
   display: grid;
@@ -131,4 +140,20 @@
   );
 
   z-index: -1;
+}
+
+.directorySection { width: min(90%, 1500px); margin: 0 auto; padding: 1rem 0 5rem; }
+.directorySection h2 { margin: 1rem 0 2rem; text-align: center; font-size: 2.2rem; }
+.tableWrapper { width: 100%; overflow-x: auto; }
+.directoryTable { width: 100%; border-collapse: collapse; background: rgba(255,255,255,.45); }
+.directoryTable th { padding: 1rem; background: rgba(0,0,0,.82); color: #f1ca54; text-align: left; font-size: 1.2rem; }
+.directoryTable td { padding: 1rem; border-bottom: 1px solid rgba(0,0,0,.18); vertical-align: top; font-size: 1.15rem; line-height: 1.45; }
+.directoryTable tbody tr:nth-child(even) { background: rgba(255,255,255,.3); }
+.directoryTable tbody tr:nth-child(odd) { background: rgba(0,0,0,.035); }
+.directoryTable tbody tr:hover { background: rgba(241,202,84,.2); }
+.directoryTable a { color: inherit; font-weight: 600; }
+
+@media (max-width: 768px) {
+  .directorySection { width: 94%; }
+  .directoryTable { min-width: 760px; }
 }
