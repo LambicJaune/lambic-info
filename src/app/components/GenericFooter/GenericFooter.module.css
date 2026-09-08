@@ -55,7 +55,7 @@
 .footer-social {
   position: absolute;
   bottom: 1.5rem;
-  right: 4rem;
+  right: 8rem;
   display: flex;
   gap: 1rem;
 }

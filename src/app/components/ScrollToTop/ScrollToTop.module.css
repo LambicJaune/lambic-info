@@ -1,0 +1,34 @@
+.button {
+  position: fixed;
+  right: clamp(1rem, 2.5vw, 2rem);
+  bottom: clamp(1rem, 2.5vw, 2rem);
+  z-index: 1000;
+  display: inline-flex;
+  width: 3.25rem;
+  height: 3.25rem;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid rgba(0, 0, 0, 0.72);
+  border-radius: 50%;
+  background: rgba(25, 25, 25, 0.68);
+  color: #f1ca54;
+  font-size: 1.25rem;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.32);
+  backdrop-filter: blur(3px);
+  transition: background-color 160ms ease, transform 160ms ease;
+}
+
+.button:hover {
+  background: rgba(25, 25, 25, 0.88);
+  transform: translateY(-2px);
+}
+
+.button:focus-visible {
+  outline: 3px solid #f1ca54;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button { transition: none; }
+}

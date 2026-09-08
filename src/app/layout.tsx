@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Josefin_Sans } from "next/font/google";
 import "./globals.css";
+import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,6 +35,7 @@ export default function RootLayout({
       suppressHydrationWarning={true}
       >
         {children}
+        <ScrollToTop />
       </body>
     </html>
   );
