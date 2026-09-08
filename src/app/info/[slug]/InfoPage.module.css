@@ -100,10 +100,12 @@
 
 /* --- 4. Glossary Navigation --- */
 .alphabetNav {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 4rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(2.5rem, 1fr));
+    gap: 0.25rem;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto 4rem;
     padding: 15px;
     background: rgba(255, 255, 255, 0.07);
     backdrop-filter: blur(4px);
@@ -119,8 +121,9 @@
     color: #000000;
     font-size: 1.5rem;
     text-shadow: 2px 1px 2px rgba(0, 0, 0, 0.4);
-    font-weight: bold;
-    padding: 5px 10px;
+    font-weight: 600;
+    padding: 5px 2px;
+    text-align: center;
     border: 1px solid transparent;
     transition: all 0.2s;
 }
@@ -128,7 +131,17 @@
 .navLink:hover {
     border-color: #93b591;
     border-radius: 4px;
-    background: white;
+    background: rgba(255, 255, 255, 0.7);
+    text-shadow: none;
+}
+
+.navLink:focus-visible {
+    border-color: #93b591;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.7);
+    outline: 2px solid #000;
+    outline-offset: 2px;
+    text-shadow: none;
 }
 
 /* --- 5. Glossary / Accordion Elements --- */
@@ -136,6 +149,13 @@
     border-bottom: 1px solid #eaeaea;
     padding: 1rem 0;
     scroll-margin-top: 140px; /* Offset for sticky nav when jumping */
+}
+
+.glossaryLetters {
+    width: 100%;
+    max-width: 1200px;
+    margin-top: 2rem;
+    margin-inline: auto;
 }
 
 .letterHeader {
@@ -147,6 +167,10 @@
     cursor: pointer;
     padding: 10px 0;
     color: #000000;
+}
+
+.letterHeader::marker {
+    content: '';
 }
 
 /* Support for custom open/close markers if desired */
@@ -172,6 +196,90 @@
 
 details[open] .plusIcon {
     transform: rotate(45deg);
+}
+
+.letterContent {
+    padding: 0.5rem 1rem 1rem;
+}
+
+.letterContent ul,
+.letterContent ol {
+    margin-left: 1.5rem;
+}
+
+.glossaryReferences {
+    margin-top: 3rem;
+}
+
+.glossaryReferences > h2,
+.article > h2[id='references'] {
+    text-align: center;
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+}
+
+.glossaryReferences > ol,
+.article > h2[id='references'] + ol {
+    font-size: 1.15rem;
+    line-height: 1.5;
+}
+
+.infoAccordionList {
+    margin-top: 2rem;
+}
+
+.infoAccordion {
+    margin-block: 1rem;
+}
+
+.infoAccordion > summary {
+    list-style: none;
+    cursor: pointer;
+}
+
+.infoAccordion > summary::-webkit-details-marker {
+    display: none;
+}
+
+.infoAccordion > summary h2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-block: 0;
+    text-align: center;
+}
+
+.leftAlignedInfoAccordion > summary h2 {
+    justify-content: flex-start;
+    text-align: left;
+}
+
+.infoAccordion > summary h2::after {
+    content: '+';
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 2rem;
+    height: 2rem;
+    margin-left: 1rem;
+    padding: 0.9rem;
+    border: 2px solid #000;
+    border-radius: 50%;
+    background: rgb(211 211 211 / 45%);
+    box-sizing: border-box;
+    font-size: 1.8rem;
+    vertical-align: middle;
+}
+
+.infoAccordion[open] > summary h2::after {
+    content: '−';
+}
+
+.infoAccordionContent {
+    display: flow-root;
+    padding: 1rem 0;
 }
 
 .entryList {
@@ -201,6 +309,7 @@ details[open] .plusIcon {
     .mainWrapper {
         padding: 4rem 3rem; /* Reduce huge side padding on tablets/small laptops */
     }
+
 }
 
 @media (max-width: 768px) {
@@ -232,7 +341,6 @@ details[open] .plusIcon {
 
     .alphabetNav {
         top: 10px; /* Adjust sticky position for mobile headers */
-        justify-content: center;
     }
 }
 
