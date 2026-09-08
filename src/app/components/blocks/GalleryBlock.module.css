@@ -37,6 +37,9 @@
 .item figcaption {
     margin-top: 0.4rem;
     font-size: 0.9em;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    word-break: break-word;
 }
 
 .lightbox {

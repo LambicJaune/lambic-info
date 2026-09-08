@@ -12,7 +12,7 @@ export default function InlineRenderer({
         <>
             {content.map((node, i) => {
                 if (typeof node === 'string') {
-                    return <span key={i}>{node}</span>;
+                    return <span key={i}>{renderLegacySuperscript(node)}</span>;
                 }
 
                 switch (node.type) {
@@ -95,4 +95,11 @@ export default function InlineRenderer({
             })}
         </>
     );
+}
+
+function renderLegacySuperscript(text: string) {
+    return text.split(/(<sup>.*?<\/sup>)/gi).map((part, index) => {
+        const match = part.match(/^<sup>(.*?)<\/sup>$/i);
+        return match ? <sup key={index}>{match[1]}</sup> : part;
+    });
 }

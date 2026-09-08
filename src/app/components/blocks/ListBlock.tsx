@@ -1,5 +1,6 @@
 import { ListBlock as ListBlockType, ListItem } from "@/types/blocks";
 import InlineRenderer from "./InlineRenderer";
+import styles from "./ListBlock.module.css";
 
 export default function ListBlock({
     style,
@@ -8,14 +9,14 @@ export default function ListBlock({
     switch (style) {
         case "bullet":
             return (
-                <ul>
+                <ul className={styles.list}>
                     <ListItems items={items} />
                 </ul>
             );
 
         case "numbered":
             return (
-                <ol>
+                <ol className={styles.list}>
                     <ListItems items={items} />
                 </ol>
             );
@@ -37,7 +38,7 @@ export default function ListBlock({
                                 {item.children && (
                                     // Nested list style is not retained by the contract,
                                     // so use the same bullet fallback as other nested items.
-                                    <ul>
+                                    <ul className={styles.list}>
                                         <ListItems items={item.children} />
                                     </ul>
                                 )}
@@ -59,7 +60,7 @@ function ListItems({ items }: { items: ListItem[] }) {
                     {item.children && (
                         // Contract does not preserve nested list style,
                         // default to bullet list for nested children.
-                        <ul>
+                        <ul className={styles.list}>
                             <ListItems items={item.children} />
                         </ul>
                     )}

@@ -1,0 +1,5 @@
+.standaloneBold,
+.standaloneBold strong {
+    font-weight: 600;
+    -webkit-text-stroke: 0.2px currentColor;
+}

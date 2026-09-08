@@ -1,0 +1,37 @@
+.videoGroup {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1.5rem;
+  padding-top: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.videoGroup iframe {
+  display: block;
+  max-width: 100%;
+  border: 0;
+}
+
+.blockquote {
+  margin: 1.5rem 0 2rem;
+  padding: 1.25rem 1.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.28);
+  border-left: 4px solid rgba(0, 0, 0, 0.55);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.42);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.blockquote > :first-child { margin-top: 0; }
+.blockquote > :last-child { margin-bottom: 0; }
+
+@media (max-width: 600px) {
+  .videoGroup iframe {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+  }
+}

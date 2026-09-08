@@ -77,7 +77,7 @@ export default function ImageBlock({
                 />
             </button>
 
-            {caption && <figcaption>{caption}</figcaption>}
+            {caption && <ImageCaption caption={caption} />}
 
             {isEnlarged && (
                 <div
@@ -105,10 +105,26 @@ export default function ImageBlock({
                             src={url}
                             alt={alt ?? ''}
                         />
-                        {caption && <figcaption>{caption}</figcaption>}
+                        {caption && <ImageCaption caption={caption} />}
                     </figure>
                 </div>
             )}
         </figure>
+    );
+}
+
+function ImageCaption({ caption }: { caption: string }) {
+    // Temporary compatibility for MediaWiki-style source links that were
+    // migrated into ImageBlock's string-only caption field.
+    const source = caption.match(/Source:\s*\[(https?:\/\/\S+)\s+([^\]]+?)(?:\])?$/i);
+    if (!source) return <figcaption>{caption}</figcaption>;
+
+    return (
+        <figcaption>
+            Source:{' '}
+            <a href={source[1]} target="_blank" rel="noopener noreferrer">
+                {source[2].trim()}
+            </a>
+        </figcaption>
     );
 }

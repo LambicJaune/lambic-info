@@ -1,3 +1,7 @@
 .heading {
     clear: both;
 }
+
+.heading strong {
+    font-weight: inherit;
+}

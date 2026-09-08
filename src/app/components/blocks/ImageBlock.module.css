@@ -38,6 +38,9 @@
     font-size: 0.9em;
     line-height: 1.35;
     color: rgb(0 0 0 / 88%);
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    word-break: break-word;
 }
 
 .left {
