@@ -1,11 +1,15 @@
-import Link from "next/link";
-import Image from "next/image";
-import GenericBanner from "@/app/components/GenericBanner/GenericBanner";
-import Footer from "@/app/components/GenericFooter/GenericFooter";
-import styles from "./PlacesPage.module.css";
-import { placesMockData } from "./placesMockData";
+import Footer from '@/app/components/GenericFooter/GenericFooter';
+import GenericBanner from '@/app/components/GenericBanner/GenericBanner';
+import { getPlaceCountries } from '@/lib/placeDirectory';
+import Image from 'next/image';
+import Link from 'next/link';
+import styles from './PlacesPage.module.css';
 
-export default function LambicPlacesPage() {
+export const dynamic = 'force-dynamic';
+
+export default async function LambicPlacesPage() {
+    const countries = await getPlaceCountries();
+
     return (
         <>
             <GenericBanner backLink="/" />
@@ -14,19 +18,13 @@ export default function LambicPlacesPage() {
                     <h1>Lambic Places</h1>
                 </section>
                 <div className={styles.placesGrid}>
-                    {Object.entries(placesMockData).map(([slug, country]: [string, any]) => (
-                        <Link href={`/lambic-places/${slug}`} key={slug} className={styles.placeCard}>
+                    {countries.map((country) => (
+                        <Link href={`/lambic-places/${country.slug}`} key={country.slug} className={styles.placeCard}>
                             <div className={styles.placeImageWrapper}>
-                                <Image 
-                                    src="/images/shared/brewers_box.jpg"
-                                    alt={country.name}
-                                    fill
-                                    className={styles.placeCardBg}
-                                    priority
-                                />
+                                <Image src="/images/shared/brewers_box.jpg" alt="" fill className={styles.placeCardBg} priority />
                                 <div className={styles.placeOverlay}>
                                     <h2>{country.name}</h2>
-                                    <img src={country.flagIcon} alt="flag" className={styles.cardFlag} />
+                                    <img src="/images/shared/worldwide.png" alt="" className={styles.cardFlag} />
                                 </div>
                             </div>
                         </Link>
