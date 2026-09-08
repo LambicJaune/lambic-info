@@ -106,7 +106,7 @@ export const EventsMockData: { [key: string]: CountryEventData } = {
                 frequency: "Annual (formerly)",
                 nextOccurrence: "None planned",
                 status: "On Hiatus",
-                image: "/images/events/shelton-hero.jpg",
+                image: "/images/landing/categories/lambic_events.jpg",
                 location: "Various Cities, USA",
                 overview: "A festival highlighting world-class spontaneous fermentation.",
                 sections: []
