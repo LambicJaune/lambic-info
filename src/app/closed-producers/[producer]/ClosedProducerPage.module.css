@@ -343,6 +343,9 @@
 }
 
 .logTable tr:hover { background: rgba(241, 202, 84, 0.15); }
+.logTable tbody tr:nth-child(even) { background: rgba(255, 255, 255, 0.28); }
+.logTable tbody tr:nth-child(odd) { background: rgba(0, 0, 0, 0.035); }
+.logTable tbody tr:hover { background: rgba(241, 202, 84, 0.15); }
 .boldCell { font-weight: 600; }
 
 /* ================= BEER IMAGE THUMBNAILS ================= */
