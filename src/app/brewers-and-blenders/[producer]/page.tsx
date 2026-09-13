@@ -53,7 +53,10 @@ export default async function ProducerPage({
             : page.slug === 'het-boerenerf'
                 ? moveHetBoerenerfHistoryImages(page.blocks)
             : page.blocks;
-    const repairedBlocks = repairMalformedUrlReferences(imageOrderedBlocks);
+    const visibleBlocks = page.slug === 'bokke'
+        ? excludeRetiredBokkeBeer(imageOrderedBlocks)
+        : imageOrderedBlocks;
+    const repairedBlocks = repairMalformedUrlReferences(visibleBlocks);
     const { overviewBlocks, remainingBlocks } = splitProducerBlocks(repairedBlocks);
     const overviewHeading =
         overviewBlocks[0]?.type === 'heading' ? overviewBlocks[0] : null;
@@ -115,6 +118,20 @@ export default async function ProducerPage({
             <Footer />
         </>
     );
+}
+
+function excludeRetiredBokkeBeer(blocks: Block[]): Block[] {
+    return blocks.map((block) => {
+        if (block.type !== 'list') return block;
+        return {
+            ...block,
+            items: block.items.filter((item) => !item.content.some((node) => {
+                if (typeof node === 'string' || node.type !== 'link') return false;
+                const slug = node.href.split('#')[0].split('/').filter(Boolean).at(-1);
+                return slug === 'adam-stephanie-july-9th-2016';
+            })),
+        };
+    });
 }
 
 function moveDenHerbergHistoryImages(blocks: Block[]): Block[] {

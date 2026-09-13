@@ -9,6 +9,10 @@ export default function TableBlock({
     cssClass,
 }: TableBlockType) {
     const isWide = Math.max(0, ...rows.map(row => row.cells.length)) >= 8;
+    const headerRow = rows.find(row => row.cells.length > 0 && row.cells.every(cell => cell.isHeader));
+    const columnLabels = headerRow?.cells.flatMap(cell => (
+        Array.from({ length: cell.colspan ?? 1 }, () => inlineText(cell.content).trim())
+    )) ?? [];
 
     return (
         <div className={styles.tableWrapper}>
@@ -30,6 +34,7 @@ export default function TableBlock({
                                         key={cellIndex}
                                         colSpan={cell.colspan ?? undefined}
                                         rowSpan={cell.rowspan ?? undefined}
+                                        data-label={!cell.isHeader ? columnLabels[cellIndex] || undefined : undefined}
                                     >
                                         <TableCellContent content={cell.content} />
                                     </CellTag>

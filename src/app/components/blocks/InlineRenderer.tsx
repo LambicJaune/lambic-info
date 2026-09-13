@@ -12,7 +12,7 @@ export default function InlineRenderer({
         <>
             {content.map((node, i) => {
                 if (typeof node === 'string') {
-                    return <span key={i}>{renderLegacySuperscript(node)}</span>;
+                    return <span key={i}>{renderLegacyInlineHtml(node)}</span>;
                 }
 
                 switch (node.type) {
@@ -97,9 +97,14 @@ export default function InlineRenderer({
     );
 }
 
-function renderLegacySuperscript(text: string) {
-    return text.split(/(<sup>.*?<\/sup>)/gi).map((part, index) => {
-        const match = part.match(/^<sup>(.*?)<\/sup>$/i);
-        return match ? <sup key={index}>{match[1]}</sup> : part;
+function renderLegacyInlineHtml(text: string) {
+    // Compatibility is deliberately restricted to paired formatting tags that
+    // the migration stored as text. Arbitrary HTML is never injected.
+    return text.split(/(<(?:sup|u)>.*?<\/(?:sup|u)>)/gi).map((part, index) => {
+        const superscript = part.match(/^<sup>(.*?)<\/sup>$/i);
+        if (superscript) return <sup key={index}>{superscript[1]}</sup>;
+
+        const underline = part.match(/^<u>(.*?)<\/u>$/i);
+        return underline ? <u key={index}>{underline[1]}</u> : part;
     });
 }

@@ -67,3 +67,74 @@
 .table th {
   border-bottom-color: rgba(0, 0, 0, 0.18);
 }
+
+@media (max-width: 700px) {
+  .tableWrapper {
+    overflow-x: visible;
+  }
+
+  .table,
+  .wideTable,
+  .table tbody {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    border: 0;
+    background: transparent;
+  }
+
+  .table tr:has(th) {
+    display: none;
+  }
+
+  .table tr:not(:has(th)) {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 1.5rem;
+    padding: 0.5rem;
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.5);
+  }
+
+  .table td {
+    display: flex;
+    min-width: 0;
+    width: auto !important;
+    box-sizing: border-box;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.8rem 0.5rem;
+    border: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    font-size: 1.1rem;
+    text-align: right;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .table td:last-child {
+    border-bottom: 0;
+    flex-direction: column;
+    text-align: left;
+  }
+
+  .table td::before {
+    flex: 0 0 auto;
+    margin-right: 1rem;
+    color: #333;
+    content: attr(data-label);
+    font-weight: 700;
+    font-size: 0.9rem;
+    line-height: 1.35;
+    text-align: left;
+    text-transform: uppercase;
+  }
+
+  .table td > * {
+    min-width: 0;
+    max-width: 100%;
+  }
+}

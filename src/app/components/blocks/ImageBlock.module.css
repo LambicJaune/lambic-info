@@ -85,10 +85,10 @@
     color: white;
 }
 
-.figure .enlargedImage {
+.enlargedImage {
     display: block;
     width: auto;
-    max-width: 100%;
+    max-width: min(90vw, 90rem);
     max-height: 80vh;
     margin-inline: auto;
     object-fit: contain;

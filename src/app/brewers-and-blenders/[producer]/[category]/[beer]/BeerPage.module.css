@@ -1,0 +1,244 @@
+.pageContainer {
+  width: 100%;
+  min-height: 100vh;
+  background: url("/images/brewers-and-blenders/overview_bg.jpg") center/cover fixed;
+}
+
+.pageTitleBanner {
+  width: 100%;
+  padding: 2rem 0 2.5rem;
+  text-align: center;
+}
+
+.pageTitleBanner h1 {
+  display: inline-block;
+  max-width: 92%;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 2rem clamp(7.5rem, 11vw, 10rem);
+  background: url("/images/shared/black_paint_stroke.png") center/100% 220% no-repeat;
+  color: #f1ca54;
+  font-family: "RivannaNF", serif;
+  font-size: clamp(2.4rem, 5vw, 3.1rem);
+  font-weight: 500;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+  text-shadow: 2px 3px 0 rgba(0,0,0,0.8), 3px 4px 2px rgba(241,202,84,0.8);
+}
+
+.pageContent {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 1rem 0 4rem;
+}
+
+.contentWrapper {
+  width: 90%;
+  max-width: 1400px;
+  color: #1a1a1a;
+  font-size: 1.25rem;
+  line-height: 1.75;
+}
+
+.contentWrapper::after { display: block; clear: both; content: ""; }
+
+.labelImage {
+  float: right;
+  max-width: 40%;
+  margin: 0 0 2rem 3rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-sizing: border-box;
+}
+
+.labelImage :global([data-image-align='right']) {
+  float: none;
+  width: auto !important;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: #fff;
+  box-shadow:
+    0 0 0 9px rgba(255, 255, 255, 0.58),
+    0 15px 40px rgba(0, 0, 0, 0.25);
+  transform: rotate(1.5deg);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.labelImage :global([data-image-align='right'] img) {
+  width: auto;
+  max-width: 100%;
+  max-height: 28rem;
+  margin-inline: auto;
+  object-fit: contain;
+}
+
+.labelImage :global([data-image-align='right']:hover) {
+  transform: rotate(0deg) scale(1.03);
+  box-shadow:
+    0 0 0 9px rgba(255, 255, 255, 0.58),
+    0 1rem 2.5rem rgba(0,0,0,0.28);
+}
+
+.contentSection {
+  margin-bottom: 3.5rem;
+}
+
+.contentSection:first-of-type > h2 {
+  clear: none;
+  margin-top: 0;
+}
+
+.contentSection > h2 {
+  width: 100%;
+  margin: 3rem 0 2rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #000;
+  color: #000;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 2.2rem;
+  text-align: left;
+}
+
+.labelSection {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+.labelSection > h2,
+.labelSection > p,
+.labelSection > table,
+.labelSection > :global([data-block='gallery']) {
+  flex-basis: 100%;
+}
+
+.labelSection > figure {
+  flex: 0 1 auto;
+  margin: 0;
+}
+
+.bottleLog {
+  clear: both;
+  margin: 4rem 0 5rem;
+}
+
+.bottleLog > summary {
+  cursor: pointer;
+  list-style: none;
+}
+
+.bottleLog > summary::-webkit-details-marker { display: none; }
+
+.bottleLog > summary h2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 0 2rem;
+  color: #000;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 2.3rem;
+}
+
+.bottleLog > summary h2::after {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  margin-left: 1.5rem;
+  border: 2px solid #000;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.15);
+  content: "+";
+  font: 700 1.3rem/1 Arial, sans-serif;
+}
+
+.bottleLog[open] > summary h2::after { content: "−"; }
+.bottleLogContent { padding-top: 0.5rem; }
+
+.bottleLogContent :global(caption) {
+  display: none;
+}
+
+/* Bottle-log schemas vary, but four-column logs consistently pair compact
+   date/size/image fields with a longer notes field. Fixing those proportions
+   prevents cell content from deciding the whole table geometry. The shared
+   wrapper remains horizontally scrollable when this minimum cannot fit. */
+.bottleLogContent :global(table) {
+  min-width: 46rem;
+  table-layout: fixed;
+}
+
+.bottleLogContent :global(th) {
+  text-align: center;
+  vertical-align: middle;
+  line-height: 1.25;
+}
+
+.bottleLogContent :global(tr > :nth-child(1):nth-last-child(4)) { width: 22%; }
+.bottleLogContent :global(tr > :nth-child(2):nth-last-child(3)) { width: 14%; }
+.bottleLogContent :global(tr > :nth-child(3):nth-last-child(2)) { width: 46%; }
+.bottleLogContent :global(tr > :nth-child(4):last-child) {
+  width: 18%;
+  padding-inline: 0.45rem;
+  vertical-align: middle;
+}
+
+.bottleLogContent :global(tr > :nth-child(4):last-child [data-block='gallery']) {
+  grid-template-columns: minmax(8rem, 11rem);
+  align-items: center;
+  justify-content: center;
+}
+
+.bottleLogContent :global(tr > :nth-child(4):last-child [data-block='gallery'] img) {
+  width: 100%;
+  max-height: 12rem;
+  aspect-ratio: auto;
+  object-fit: contain;
+}
+
+.referencesSection {
+  clear: both;
+  margin-top: 3rem;
+}
+
+.referencesSection > h2 {
+  margin: 0 0 1.33rem;
+  border: 0;
+  color: rgba(20,20,20,0.72);
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 1.5rem;
+}
+
+.referencesSection > p,
+.referencesSection > ol,
+.referencesSection > ul { font-size: 1.15rem; line-height: 1.5; }
+
+@media (max-width: 768px) {
+  .pageTitleBanner h1 {
+    width: min(95%, 34rem);
+    box-sizing: border-box;
+    padding: 2rem 3.5rem;
+    font-size: 2.25rem;
+    line-height: 1;
+  }
+
+  .contentWrapper { width: 92%; }
+
+  .labelImage {
+    float: none;
+    max-width: min(18rem, 85vw);
+    margin: 0 auto 2.5rem;
+  }
+
+  .contentSection > h2 { line-height: 1.2; }
+
+  .bottleLogContent :global(table) {
+    min-width: 0;
+  }
+}

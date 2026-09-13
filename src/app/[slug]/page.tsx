@@ -12,6 +12,7 @@ interface Props {
  */
 export default async function LegacyPageLink({ params }: Props) {
     const { slug } = await params;
+    if (slug.toLowerCase() === 'adam-stephanie-july-9th-2016') notFound();
     const page = await getPageBySlug(slug.toLowerCase());
 
     if (!page) notFound();
@@ -23,6 +24,9 @@ export default async function LegacyPageLink({ params }: Props) {
             redirect(`/closed-producers/${page.slug}`);
         case 'info-article':
             redirect(`/info/${page.slug}`);
+        case 'beer':
+            if (!page.backTo?.slug) notFound();
+            redirect(`/brewers-and-blenders/${page.backTo.slug}/beers/${page.slug}`);
         default:
             // Detail routes for the remaining page types do not yet share a
             // stable URL shape, so avoid guessing an incorrect destination.

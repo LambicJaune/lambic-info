@@ -31,6 +31,10 @@
   cursor: pointer;
 }
 
+.mobileBackLabel {
+  display: none;
+}
+
 .logoContainer {
   position: relative;
 }
@@ -78,5 +82,13 @@
 
   .backButton {
     font-size: 1.7rem;
+  }
+
+  .desktopBackLabel {
+    display: none;
+  }
+
+  .mobileBackLabel {
+    display: inline;
   }
 }

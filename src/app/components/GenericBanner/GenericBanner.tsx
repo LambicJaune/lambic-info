@@ -12,6 +12,8 @@ interface GenericBannerProps {
     aspectRatio?: string;
     padding?: string;
     backLink?: string; // This is now our primary navigation driver
+    backLabel?: string;
+    mobileBackLabel?: string;
 }
 
 export default function GenericBanner({
@@ -21,6 +23,8 @@ export default function GenericBanner({
     aspectRatio = "2 / 1",
     padding = "3rem 1rem",
     backLink,
+    backLabel = "Back",
+    mobileBackLabel,
 }: GenericBannerProps) {
     const router = useRouter();
 
@@ -45,14 +49,14 @@ export default function GenericBanner({
             {/* Back button: Now uses Link if backLink exists, otherwise falls back to history */}
             {backLink ? (
                 <Link href={backLink} className={styles.backButton}>
-                    &#8592; Back
+                    &#8592; <BackLabel desktop={backLabel} mobile={mobileBackLabel} />
                 </Link>
             ) : (
                 <button
                     onClick={handleBackClick}
                     className={styles.backButton}
                 >
-                    &#8592; Back
+                    &#8592; <BackLabel desktop={backLabel} mobile={mobileBackLabel} />
                 </button>
             )}
 
@@ -76,5 +80,16 @@ export default function GenericBanner({
                 </div>
             </Link>
         </header>
+    );
+}
+
+function BackLabel({ desktop, mobile }: { desktop: string; mobile?: string }) {
+    if (!mobile) return desktop;
+
+    return (
+        <>
+            <span className={styles.desktopBackLabel}>{desktop}</span>
+            <span className={styles.mobileBackLabel}>{mobile}</span>
+        </>
     );
 }

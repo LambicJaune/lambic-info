@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { ImageBlock as ImageBlockType } from '@/types/blocks';
 import styles from './ImageBlock.module.css';
 
@@ -79,7 +80,7 @@ export default function ImageBlock({
 
             {caption && <ImageCaption caption={caption} />}
 
-            {isEnlarged && (
+            {isEnlarged && createPortal(
                 <div
                     className={styles.lightbox}
                     role="dialog"
@@ -107,7 +108,8 @@ export default function ImageBlock({
                         />
                         {caption && <ImageCaption caption={caption} />}
                     </figure>
-                </div>
+                </div>,
+                document.body,
             )}
         </figure>
     );
