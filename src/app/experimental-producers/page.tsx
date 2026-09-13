@@ -37,8 +37,10 @@ export default async function ExperimentalProducersOverview() {
                             <table className={styles.directoryTable}>
                                 <thead><tr><th>Name</th><th>Location</th><th>Active Dates</th><th>Overview</th></tr></thead>
                                 <tbody>{rows.map((row, index) => <tr key={`${row.name}-${index}`}>
-                                    <td>{row.slug ? <Link href={`/experimental-producers/${row.slug}`}>{row.name}</Link> : row.name}</td>
-                                    <td>{row.location}</td><td>{row.activeDates}</td><td>{row.overview}</td>
+                                    <td data-label="Name">{row.slug ? <Link href={`/experimental-producers/${row.slug}`}>{row.name}</Link> : row.name}</td>
+                                    <td data-label="Location">{row.location}</td>
+                                    <td data-label="Active Dates">{row.activeDates}</td>
+                                    <td data-label="Overview">{row.overview}</td>
                                 </tr>)}</tbody>
                             </table>
                         </div>

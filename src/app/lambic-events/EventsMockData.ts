@@ -1,4 +1,4 @@
-export type EventStatus = "Active" | "On Hiatus" | "Not Occurring Anymore";
+export type EventStatus = "Active" | "Inactive" | "On Hiatus";
 
 export interface EventSection {
     title: string;

@@ -25,7 +25,6 @@
   font-weight: 500;
   font-size: clamp(2.5rem, 5vw, 3.1rem);
   padding: 2rem 6rem;
-  text-shadow: 2px 3px 0 rgba(0,0,0,0.8), 3px 4px 2px rgba(241,202,84,0.8);
   line-height: 1.2;
   margin: 0;
 }
@@ -61,6 +60,19 @@
   .categoriesGrid {
     grid-template-columns: 1fr;
     padding: 6rem 3rem;
+  }
+
+  .categoryOverlay {
+    box-sizing: border-box;
+    padding: clamp(1rem, 4vw, 2.5rem);
+  }
+
+  .categoryOverlay h3 {
+    width: 100%;
+    margin: 0;
+    font-size: 2.3rem;
+    line-height: 1.2;
+    overflow-wrap: anywhere;
   }
 }
 
@@ -101,7 +113,7 @@
   color: #f1ca54;
   font-family: "RivannaNF", serif;
   font-size: 2.3rem;
-  line-height: 1.1;
+  line-height: 1.2;
   z-index: 2;
 }
 
@@ -155,5 +167,60 @@
 
 @media (max-width: 768px) {
   .directorySection { width: 94%; }
-  .directoryTable { min-width: 760px; }
+
+  .tableWrapper { overflow: visible; }
+
+  .directoryTable thead { display: none; }
+
+  .directoryTable,
+  .directoryTable tbody,
+  .directoryTable tr {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .directoryTable tr {
+    margin-bottom: 1.5rem;
+    padding: 0.5rem;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 8px;
+    background: rgba(255,255,255,0.6);
+  }
+
+  .directoryTable td {
+    display: flex;
+    justify-content: space-between;
+    min-width: 0;
+    padding: 0.8rem 0.5rem;
+    border-bottom: 1px solid rgba(0,0,0,0.12);
+    text-align: right;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .directoryTable td:last-child {
+    flex-direction: column;
+    align-items: stretch;
+    border-bottom: none;
+    text-align: left;
+    white-space: normal;
+  }
+
+  .directoryTable td::before {
+    content: attr(data-label);
+    flex: 0 0 34%;
+    margin-right: 1rem;
+    color: #333;
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-align: left;
+    text-transform: uppercase;
+  }
+
+  .directoryTable td:last-child::before {
+    flex-basis: auto;
+    width: 100%;
+    margin: 0 0 0.65rem;
+  }
 }

@@ -21,7 +21,7 @@ export default function Home() {
         const isTouchDevice = window.matchMedia("(hover: none) and (pointer: coarse)").matches;
         if (!isTouchDevice) return;
 
-        const scrollThreshold = 100; // scroll 100px down before showing overlay, adjust as needed
+        const scrollThreshold = 60;
 
         const handleScroll = () => {
             setIsMobileScrollVisible(window.scrollY > scrollThreshold);

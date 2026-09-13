@@ -24,9 +24,6 @@
     font-weight: 500;
     font-size: clamp(2.7rem, 5vw, 3.1rem);
     padding: 2rem 6rem;
-    text-shadow:
-        2px 3px 0 rgba(0, 0, 0, 0.8),
-        3px 4px 2px rgba(241, 202, 84, 0.8);
     line-height: 1.2;
     text-align: center;
 }

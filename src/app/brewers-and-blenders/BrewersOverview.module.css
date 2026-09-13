@@ -25,7 +25,6 @@
   font-weight: 500;
   font-size: clamp(2.5rem, 5vw, 3.1rem);
   padding: 2rem 6rem;
-  text-shadow: 2px 3px 0 rgba(0,0,0,0.8), 3px 4px 2px rgba(241,202,84,0.8);
   line-height: 1.2;
   margin: 0;
 }
@@ -50,6 +49,20 @@
   .categoriesGrid {
     grid-template-columns: 1fr;
     padding: 6rem 3rem;
+  }
+
+  .categoryOverlay {
+    box-sizing: border-box;
+    padding: clamp(1rem, 4vw, 2.5rem);
+  }
+
+  .categoryOverlay h3 {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    font-size: 2.3rem;
+    line-height: 1.2;
+    overflow-wrap: anywhere;
   }
 }
 
@@ -101,7 +114,7 @@
   align-items: center;
   gap: 0.18rem;
   font-weight: 500;
-  line-height: 1.08;
+  line-height: 1.2;
   text-shadow:
     2px 2px 0 rgba(0,0,0,0.8),
     4px 4px 12px rgba(0,0,0,0.8);
