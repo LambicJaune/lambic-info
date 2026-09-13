@@ -24,7 +24,13 @@
   background: #f0f0f0; 
 }
 
-.mapIframe {
+.mapWrapper > :global([data-block="raw-html"]) {
+  width: 100%;
+  height: 100%;
+}
+
+.mapWrapper :global(iframe) {
+  display: block;
   width: 100%;
   height: 100%;
   border: none;

@@ -1,33 +1,46 @@
-import styles from "@/app/lambic-travels/TravelsPage.module.css";
-import GenericBanner from "@/app/components/GenericBanner/GenericBanner";
-import Footer from "@/app/components/GenericFooter/GenericFooter";
+import BlockRenderer from '@/app/components/blocks/BlockRenderer';
+import Footer from '@/app/components/GenericFooter/GenericFooter';
+import GenericBanner from '@/app/components/GenericBanner/GenericBanner';
+import { getPageBySlug } from '@/lib/pages';
+import type { Block } from '@/types/blocks';
+import { notFound } from 'next/navigation';
+import styles from './TravelsPage.module.css';
 
-export default function LambicTravelsPage() {
+export const dynamic = 'force-dynamic';
+
+const PAGE_SLUG = 'lambic-travels';
+
+export default async function LambicTravelsPage() {
+    const page = await getPageBySlug(PAGE_SLUG, 'info-article');
+
+    if (!page) {
+        notFound();
+    }
+
+    const contentBlocks = page.blocks.filter(block => !isMapEmbed(block));
+    const mapBlocks = page.blocks.filter(isMapEmbed);
+
     return (
         <>
-            <GenericBanner backLink={`/`} />
+            <GenericBanner backLink="/" />
             <main className={styles.pageContainer}>
-                <div className={styles.textWrapper}>
-                    <p>
-                        {`With this page you'll be able to locate a wide range of lambic places, including brewers, blenders, and closed producers (we exclusded experimental producers as they are private locations and not open for visits), as well as bars, cafés, and restaurants serving lambic. This tool is intended to help you plan your visits efficiently and give you an overview of the lambic landscape around Pajottenland. 
-                 
-                        To display (or hide) a specific category of places, click on the menu icon on the top loft of the map. You can also click on the individual icons to get more information about each place, including links to their respective pages on this website when available.
-         
-                        To calculate an itinerary, simply click on a location, and a window will open with a "Get Directions" icon. Clicking on it will open Google Maps with the route from your current location to the selected place, or the starting point of your choice.`}
-                    </p>
-                </div>
-                <div className={styles.mapWrapper}>
-                    <iframe 
-                        src="https://www.google.com/maps/d/u/0/embed?mid=1zsn8ymC4XOFqJdA7D5mZt4u_K56j9fg&ehbc=2E312F&noprof=1"
-                        className={styles.mapIframe}
-                        allowFullScreen
-                        loading="lazy"
-                        title="Lambic Map"
-                    ></iframe>
-                </div>
+                {contentBlocks.length > 0 && (
+                    <article className={styles.textWrapper}>
+                        <BlockRenderer blocks={contentBlocks} />
+                    </article>
+                )}
+
+                {mapBlocks.map((block, index) => (
+                    <div className={styles.mapWrapper} key={index}>
+                        <BlockRenderer blocks={[block]} />
+                    </div>
+                ))}
             </main>
             <Footer />
         </>
     );
 }
 
+function isMapEmbed(block: Block): block is Extract<Block, { type: 'rawHtml' }> {
+    return block.type === 'rawHtml' && /<iframe\b/i.test(block.html);
+}

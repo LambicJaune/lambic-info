@@ -15,8 +15,8 @@ const Footer: React.FC = () => {
             <li><Link href="/info/books">Books</Link></li>
             <li><Link href="/info/bibliography">Bibliography</Link></li>
             <li><Link href="/info/glossary">Glossary</Link></li>
-            <li><Link href="/horal">HORAL</Link></li>
-            <li><Link href="/lambic-groups">Lambic Groups</Link></li>
+            <li><Link href="/info/horal">HORAL</Link></li>
+            <li><Link href="/info/lambic-groups">Lambic Groups</Link></li>
             <li><Link href="/museums">Museums</Link></li>
           </ul>
         </div>
