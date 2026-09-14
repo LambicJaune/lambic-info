@@ -17,14 +17,14 @@ const Footer: React.FC = () => {
             <li><Link href="/info/glossary">Glossary</Link></li>
             <li><Link href="/info/horal">HORAL</Link></li>
             <li><Link href="/info/lambic-groups">Lambic Groups</Link></li>
-            <li><Link href="/museums">Museums</Link></li>
+            <li><Link href="/info/museums">Museums</Link></li>
           </ul>
         </div>
         <div className={styles["footer-social"]}>
-          <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
+          <a href="https://www.instagram.com/lambicdotifo" target="_blank" rel="noopener noreferrer" aria-label="Lambic.Info on Instagram">
             <FaInstagram />
           </a>
-          <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
+          <a href="https://www.facebook.com/groups/Lambic.Info" target="_blank" rel="noopener noreferrer" aria-label="Lambic.Info Facebook group">
             <FaFacebookF />
           </a>
         </div>
